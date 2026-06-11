@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Илья Ярошевич — онлайн-тренер, МСМК по жиму лёжа</title>
+<meta name="description" content="Программы тренировок для жиросжигания, набора массы и роста силы. Личное онлайн-ведение от мастера спорта международного класса по жиму лёжа.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night:#0B121C;
+    --night-2:#101A26;
+    --navy:#16222F;
+    --navy-line:#24344A;
+    --bone:#F0ECE2;
+    --fog:#8E9CAE;
+    --bronze:#C08A5A;
+    --bronze-hi:#E2A86E;
+    --bronze-deep:#8F5F36;
+    --mono:'JetBrains Mono',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  ::selection{background:var(--bronze);color:#15110C}
+  body{
+    background:var(--night);color:var(--bone);
+    font-family:'Manrope',system-ui,sans-serif;font-size:17px;line-height:1.65;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  /* зерно поверх всего — глубина */
+  body::after{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:99;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  h1,h2,h3{font-family:'Oswald',sans-serif;line-height:1.08;font-weight:600;text-transform:uppercase;letter-spacing:.01em}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+  section{padding:110px 0;position:relative}
+  a{color:inherit}
+  .eyebrow{
+    font-family:var(--mono);font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--bronze-hi);margin-bottom:20px;display:flex;align-items:center;gap:12px;
+  }
+  .eyebrow::before{content:"";width:34px;height:1px;background:var(--bronze)}
+  .btn{
+    display:inline-block;position:relative;background:var(--bronze);color:#15110C;text-decoration:none;
+    font-family:'Oswald',sans-serif;font-weight:600;font-size:15px;letter-spacing:.08em;text-transform:uppercase;
+    padding:18px 40px;border-radius:3px;overflow:hidden;transition:transform .2s,box-shadow .2s;
+  }
+  .btn::before{
+    content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);
+    transform:translateX(-120%);transition:transform .5s;
+  }
+  .btn:hover{transform:translateY(-3px);box-shadow:0 14px 36px -10px rgba(192,138,90,.55)}
+  .btn:hover::before{transform:translateX(120%)}
+  .btn:focus-visible{outline:3px solid var(--bone);outline-offset:3px}
+  .btn-ghost{background:transparent;border:1px solid var(--navy-line);color:var(--bone)}
+  .btn-ghost:hover{border-color:var(--bronze);box-shadow:0 14px 36px -14px rgba(192,138,90,.4)}
+
+  /* появление при скролле */
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}.d5{transition-delay:.4s}
+
+  /* ===== NAV ===== */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:60;
+    background:rgba(11,18,28,.72);backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(36,52,74,.6);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .logo{font-family:'Oswald',sans-serif;font-weight:700;font-size:19px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none}
+  .logo span{color:var(--bronze-hi)}
+  nav ul{display:flex;gap:30px;list-style:none}
+  nav ul a{text-decoration:none;font-size:14px;color:var(--fog);transition:color .15s;position:relative}
+  nav ul a::after{content:"";position:absolute;left:0;bottom:-4px;height:1px;width:0;background:var(--bronze-hi);transition:width .2s}
+  nav ul a:hover{color:var(--bone)}
+  nav ul a:hover::after{width:100%}
+  .nav-cta{font-family:var(--mono);font-size:12.5px;color:var(--bronze-hi);text-decoration:none;border:1px solid var(--bronze-deep);padding:9px 16px;border-radius:3px;transition:all .2s}
+  .nav-cta:hover{background:var(--bronze);color:#15110C}
+  @media(max-width:880px){nav ul,.nav-cta{display:none}}
+
+  /* ===== HERO ===== */
+  .hero{
+    min-height:100svh;display:flex;align-items:center;padding:130px 0 70px;
+    background:
+      radial-gradient(1100px 620px at 78% 12%, rgba(192,138,90,.13) 0%, transparent 55%),
+      radial-gradient(800px 600px at 8% 92%, rgba(34,56,84,.55) 0%, transparent 60%),
+      var(--night);
+  }
+  /* гигантский водяной знак */
+  .hero .watermark{
+    position:absolute;right:-2%;top:8%;font-family:'Oswald',sans-serif;font-weight:700;
+    font-size:clamp(160px,28vw,380px);line-height:.9;color:transparent;
+    -webkit-text-stroke:1px rgba(192,138,90,.14);user-select:none;pointer-events:none;
+    letter-spacing:.02em;
+  }
+  .hero .grid{display:grid;grid-template-columns:1.25fr 1fr;gap:60px;align-items:center;position:relative}
+  .hero .name{
+    font-size:clamp(54px,9vw,116px);font-weight:700;line-height:.96;letter-spacing:0;
+  }
+  .hero .name .ghost{
+    display:block;color:transparent;-webkit-text-stroke:1.5px rgba(240,236,226,.55);
+  }
+  .hero .name .solid{display:block;color:var(--bone)}
+  .hero .name .solid em{font-style:normal;background:linear-gradient(100deg,var(--bronze-hi),var(--bronze) 70%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero .rank{
+    display:inline-flex;align-items:center;gap:12px;margin:30px 0 6px;
+    font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--bone);
+    border:1px solid var(--bronze-deep);border-radius:99px;padding:10px 20px;
+    background:rgba(192,138,90,.08);
+  }
+  .hero .rank::before{content:"●";color:var(--bronze-hi);font-size:9px}
+  .hero .tagline{color:var(--fog);max-width:540px;margin:22px 0 42px;font-size:18px}
+  .hero .tagline b{color:var(--bone)}
+  .hero-cta{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+  .hero .photo-frame{position:relative}
+  .hero .photo-frame::before{
+    content:"";position:absolute;inset:-14px 14px 14px -14px;border:1px solid var(--bronze-deep);
+    border-radius:8px;z-index:0;
+  }
+  .hero .photo-slot{
+    position:relative;z-index:1;aspect-ratio:4/5;border-radius:8px;overflow:hidden;
+    background:linear-gradient(160deg,var(--navy),#0D1622 70%);border:1px solid var(--navy-line);
+    display:flex;align-items:center;justify-content:center;color:var(--fog);
+    font-family:var(--mono);font-size:12.5px;text-align:center;padding:24px;
+    box-shadow:0 40px 80px -40px rgba(0,0,0,.8);
+  }
+  .hero .photo-slot img{width:100%;height:100%;object-fit:cover;display:block}
+  .scroll-cue{
+    position:absolute;left:50%;bottom:26px;transform:translateX(-50%);
+    font-family:var(--mono);font-size:11px;letter-spacing:.3em;color:var(--fog);text-transform:uppercase;
+    animation:cue 2.2s ease-in-out infinite;
+  }
+  @keyframes cue{0%,100%{opacity:.35;transform:translate(-50%,0)}50%{opacity:1;transform:translate(-50%,8px)}}
+  @media(max-width:900px){
+    .hero .grid{grid-template-columns:1fr}
+    .hero .photo-frame{max-width:380px}
+    .hero .watermark{font-size:200px;top:2%}
+  }
+
+  /* ===== БЕГУЩАЯ СТРОКА ===== */
+  .marquee{
+    border-block:1px solid var(--navy-line);background:var(--night-2);overflow:hidden;padding:18px 0;
+  }
+  .marquee .track{
+    display:flex;gap:0;width:max-content;animation:scroll 28s linear infinite;
+  }
+  .marquee span{
+    font-family:'Oswald',sans-serif;font-size:17px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--fog);padding:0 28px;white-space:nowrap;
+  }
+  .marquee span b{color:var(--bronze-hi);font-weight:600}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  /* ===== РЕГАЛИИ ===== */
+  .creds{padding:90px 0}
+  .creds .row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0}
+  .cred{
+    padding:34px 30px;border-left:1px solid var(--navy-line);position:relative;
+  }
+  .cred:first-child{border-left:none}
+  .cred .big{
+    font-family:'Oswald',sans-serif;font-size:clamp(30px,3.6vw,44px);font-weight:700;
+    background:linear-gradient(100deg,var(--bone),var(--fog));-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .cred p{font-size:14.5px;color:var(--fog);margin-top:10px}
+  @media(max-width:760px){.cred{border-left:none;border-top:1px solid var(--navy-line)}.cred:first-child{border-top:none}}
+
+  /* ===== ОБО МНЕ ===== */
+  .about{background:linear-gradient(180deg,var(--night) 0%,var(--night-2) 100%)}
+  .about .grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
+  .about h2{font-size:clamp(28px,3.8vw,44px)}
+  .about h2 em{font-style:normal;color:var(--bronze-hi)}
+  .about .pull{
+    margin-top:34px;border-left:3px solid var(--bronze);padding:6px 0 6px 24px;
+    font-family:'Oswald',sans-serif;font-size:21px;line-height:1.4;text-transform:none;font-weight:500;
+  }
+  .about p{color:var(--fog);margin-bottom:18px}
+  .about p strong{color:var(--bone)}
+  @media(max-width:860px){.about .grid{grid-template-columns:1fr;gap:34px}}
+
+  /* ===== ПРЕИМУЩЕСТВА ===== */
+  .adv h2{font-size:clamp(28px,3.8vw,44px);margin-bottom:60px}
+  .adv-item{
+    display:grid;grid-template-columns:130px 320px 1fr;gap:30px;align-items:baseline;
+    padding:34px 18px;border-top:1px solid var(--navy-line);position:relative;
+    transition:background .25s,padding-left .25s;
+  }
+  .adv-item:last-child{border-bottom:1px solid var(--navy-line)}
+  .adv-item::before{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--bronze);
+    transform:scaleY(0);transition:transform .25s;transform-origin:top;
+  }
+  .adv-item:hover{background:rgba(22,34,47,.5);padding-left:30px}
+  .adv-item:hover::before{transform:scaleY(1)}
+  .adv-item .n{
+    font-family:'Oswald',sans-serif;font-size:44px;font-weight:700;line-height:1;
+    color:transparent;-webkit-text-stroke:1.2px var(--bronze);
+  }
+  .adv-item h3{font-size:21px}
+  .adv-item p{color:var(--fog);font-size:15.5px}
+  @media(max-width:860px){.adv-item{grid-template-columns:70px 1fr}.adv-item p{grid-column:2}}
+
+  /* ===== ТЕСТ ===== */
+  .quiz{padding:0 0 110px}
+  .quiz .box{
+    position:relative;border-radius:14px;padding:60px 54px;overflow:hidden;
+    background:linear-gradient(115deg,#1A2737 0%,var(--navy) 55%,#1E2230 100%);
+    border:1px solid var(--navy-line);
+    display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap;
+  }
+  .quiz .box::before{
+    content:"?";position:absolute;right:30px;top:-50px;font-family:'Oswald',sans-serif;font-weight:700;
+    font-size:300px;color:transparent;-webkit-text-stroke:1px rgba(192,138,90,.16);line-height:1;pointer-events:none;
+  }
+  .quiz h2{font-size:clamp(24px,3.2vw,34px);max-width:560px;position:relative}
+  .quiz p{color:var(--fog);margin-top:12px;max-width:540px;position:relative}
+  .qz{position:relative;width:100%}
+  .qz-step{display:none}
+  .qz-step.active{display:block;animation:qzin .35s cubic-bezier(.2,.7,.3,1)}
+  @keyframes qzin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .qz-label{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--bronze-hi);margin-bottom:14px}
+  .qz .btn{margin-top:22px}
+  .qz-options{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+  .qz-opt{
+    background:rgba(11,18,28,.55);border:1px solid var(--navy-line);color:var(--bone);cursor:pointer;
+    font-family:'Oswald',sans-serif;font-weight:600;font-size:15px;letter-spacing:.05em;text-transform:uppercase;
+    padding:18px 28px;border-radius:6px;transition:all .2s;
+  }
+  .qz-opt:hover{border-color:var(--bronze);background:rgba(192,138,90,.12);transform:translateY(-2px)}
+  .qz-inputs{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end;margin-top:22px}
+  .qz-inputs label{display:flex;flex-direction:column;gap:7px;font-size:13.5px;color:var(--fog)}
+  .qz-inputs input{
+    width:130px;background:rgba(11,18,28,.6);border:1px solid var(--navy-line);border-radius:6px;
+    color:var(--bone);font-family:var(--mono);font-size:18px;padding:13px 14px;outline:none;transition:border-color .2s;
+  }
+  .qz-inputs input:focus{border-color:var(--bronze)}
+  .qz-inputs .btn{margin-top:0}
+  .qz-bmi{margin-top:22px;font-size:17px}
+  .qz-bmi b{font-family:var(--mono);color:var(--bronze-hi);font-size:20px}
+  .qz-res-actions{display:flex;gap:14px;flex-wrap:wrap}
+  .qz-restart{
+    display:block;margin-top:20px;background:none;border:none;color:var(--fog);cursor:pointer;
+    font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;
+  }
+  .qz-restart:hover{color:var(--bone)}
+
+  /* ===== ПРОГРАММЫ ===== */
+  .programs{background:var(--night-2)}
+  .programs h2{font-size:clamp(28px,3.8vw,44px);margin-bottom:16px}
+  .programs .lead{color:var(--fog);max-width:640px;margin-bottom:56px}
+  .prog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:18px}
+  .prog{
+    position:relative;background:var(--navy);border:1px solid var(--navy-line);border-radius:12px;
+    padding:34px 30px;display:flex;flex-direction:column;overflow:hidden;
+    transition:transform .25s,border-color .25s,box-shadow .25s;
+  }
+  .prog::before{
+    content:"";position:absolute;inset:0 0 auto 0;height:3px;
+    background:linear-gradient(90deg,var(--bronze-hi),var(--bronze));
+    transform:scaleX(0);transform-origin:left;transition:transform .3s;
+  }
+  .prog:hover{transform:translateY(-6px);border-color:var(--bronze-deep);box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
+  .prog:hover::before{transform:scaleX(1)}
+  .prog .aud{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--fog);margin-bottom:16px}
+  .prog h3{font-size:20px;margin-bottom:12px;min-height:54px}
+  .prog .desc{font-size:14.5px;color:var(--fog);flex:1;margin-bottom:24px}
+  .prog .cost{font-family:'Oswald',sans-serif;font-size:26px;font-weight:600;margin-bottom:18px}
+  .prog .cost span{font-size:13px;color:var(--fog);font-family:'Manrope',sans-serif;font-weight:400;text-transform:none}
+  .prog .btn{padding:14px 18px;font-size:13px;text-align:center}
+  .prog.hot{border-color:var(--bronze);background:linear-gradient(160deg,rgba(192,138,90,.10),var(--navy) 55%)}
+  .prog.hot::before{transform:scaleX(1)}
+  .prog.hot .aud{color:var(--bronze-hi)}
+  .prog-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .prog-actions .btn{padding:14px 10px}
+  .btn-more{
+    background:transparent;border:1px solid var(--navy-line);color:var(--fog);cursor:pointer;
+    font-family:'Oswald',sans-serif;font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;
+    padding:14px 10px;border-radius:3px;transition:all .2s;
+  }
+  .btn-more:hover{color:var(--bone);border-color:var(--bronze)}
+
+  /* ===== МОДАЛЬНЫЕ ОКНА ===== */
+  .modal{
+    position:fixed;inset:0;z-index:80;display:none;align-items:center;justify-content:center;padding:24px;
+  }
+  .modal.open{display:flex}
+  .modal .backdrop{position:absolute;inset:0;background:rgba(6,10,16,.78);backdrop-filter:blur(6px)}
+  .modal .panel{
+    position:relative;max-width:640px;width:100%;max-height:86vh;overflow-y:auto;
+    background:var(--navy);border:1px solid var(--navy-line);border-top:4px solid var(--bronze);
+    border-radius:12px;padding:44px 42px;animation:pop .25s cubic-bezier(.2,.7,.3,1.1);
+  }
+  @keyframes pop{from{opacity:0;transform:translateY(26px) scale(.97)}to{opacity:1;transform:none}}
+  .modal .close{
+    position:absolute;top:14px;right:16px;background:none;border:none;color:var(--fog);
+    font-size:26px;cursor:pointer;line-height:1;padding:6px;transition:color .15s;
+  }
+  .modal .close:hover{color:var(--bone)}
+  .modal .aud{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--bronze-hi);margin-bottom:14px}
+  .modal h3{font-size:24px;margin-bottom:16px}
+  .modal p{color:var(--fog);font-size:15.5px;margin-bottom:14px}
+  .modal p b{color:var(--bone)}
+  .modal ul{list-style:none;margin:18px 0 24px}
+  .modal li{
+    font-size:15px;padding:10px 0 10px 28px;position:relative;border-bottom:1px solid rgba(36,52,74,.6);
+  }
+  .modal li::before{content:"▸";position:absolute;left:4px;color:var(--bronze-hi)}
+  .modal .m-cost{font-family:'Oswald',sans-serif;font-size:26px;font-weight:600;margin:8px 0 18px}
+  .modal .m-cost span{font-size:13px;color:var(--fog);font-family:'Manrope',sans-serif;font-weight:400}
+  .modal .note{font-size:13px;color:var(--fog);margin-top:18px;border-top:1px solid var(--navy-line);padding-top:14px}
+
+  /* ===== ВЕДЕНИЕ ===== */
+  .lead-coach h2{font-size:clamp(28px,3.8vw,44px);margin-bottom:16px}
+  .lead-coach .lead{color:var(--fog);max-width:660px;margin-bottom:56px}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-bottom:54px}
+  .step{
+    background:var(--navy);border:1px solid var(--navy-line);border-radius:12px;padding:30px;
+    transition:transform .25s,border-color .25s;
+  }
+  .step:hover{transform:translateY(-4px);border-color:var(--bronze-deep)}
+  .step .n{
+    font-family:'Oswald',sans-serif;font-size:34px;font-weight:700;line-height:1;display:block;margin-bottom:16px;
+    color:transparent;-webkit-text-stroke:1.1px var(--bronze);
+  }
+  .step h3{font-size:18px;margin-bottom:10px}
+  .step p{font-size:14.5px;color:var(--fog)}
+  .coach-offer{
+    position:relative;display:flex;justify-content:space-between;align-items:center;gap:34px;flex-wrap:wrap;
+    border:1px solid var(--bronze-deep);border-radius:14px;padding:44px 46px;overflow:hidden;
+    background:
+      radial-gradient(600px 300px at 0% 0%, rgba(192,138,90,.16), transparent 60%),
+      var(--navy);
+  }
+  .coach-offer .price{font-family:'Oswald',sans-serif;font-size:clamp(30px,4vw,42px);font-weight:700}
+  .coach-offer .price span{font-size:15px;color:var(--fog);font-family:'Manrope',sans-serif;font-weight:400}
+  .coach-offer p{color:var(--fog);font-size:15px;max-width:440px;margin-top:8px}
+
+  /* ===== ПОДАРОК ===== */
+  .gift{padding:0 0 110px}
+  .gift .box{
+    position:relative;border-radius:14px;padding:60px 54px;overflow:hidden;
+    background:linear-gradient(115deg,var(--bronze-deep) 0%,var(--bronze) 60%,var(--bronze-hi) 100%);
+    color:#1A1208;
+    display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap;
+  }
+  .gift h2{font-size:clamp(24px,3.2vw,34px);max-width:600px}
+  .gift p{margin-top:12px;max-width:560px;color:#2E2212;font-weight:500}
+  .gift .eyebrow{color:#3A2A14}
+  .gift .eyebrow::before{background:#3A2A14}
+  .gift .btn{background:#15110C;color:var(--bone)}
+  .gift .btn:hover{box-shadow:0 14px 36px -10px rgba(0,0,0,.5)}
+
+  /* ===== ФУТЕР ===== */
+  footer{border-top:1px solid var(--navy-line);padding:54px 0 40px;font-size:14px;color:var(--fog);background:var(--night-2)}
+  footer .cols{display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap;margin-bottom:30px}
+  footer h3{font-size:14px;color:var(--bone);margin-bottom:12px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-weight:700}
+  footer a{display:block;text-decoration:none;margin-bottom:7px;transition:color .15s}
+  footer a:hover{color:var(--bronze-hi)}
+  footer .fine{font-size:12.5px;border-top:1px solid var(--navy-line);padding-top:22px}
+
+  @media(max-width:760px){section{padding:70px 0}.quiz,.gift{padding:0 0 70px}}
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .reveal{opacity:1;transform:none;transition:none}
+    .marquee .track{animation:none}
+    .scroll-cue{animation:none}
+    .btn:hover,.prog:hover,.step:hover{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#">Илья <span>Ярошевич</span></a>
+    <ul>
+      <li><a href="#about">Обо мне</a></li>
+      <li><a href="#advantages">Преимущества</a></li>
+      <li><a href="#programs">Программы</a></li>
+      <li><a href="#coaching">Личное ведение</a></li>
+      <li><a href="#contacts">Контакты</a></li>
+    </ul>
+    <a class="nav-cta" href="https://t.me/ilya_yaroshevich">Написать →</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="watermark">МСМК</div>
+  <div class="wrap grid">
+    <div>
+      <div class="eyebrow reveal in">Онлайн-тренер · сила и композиция тела</div>
+      <h1 class="name reveal in d1">
+        <span class="ghost">Илья</span>
+        <span class="solid">Яроше<em>вич</em></span>
+      </h1>
+      <div class="rank reveal in d2">Мастер спорта международного класса · жим лёжа</div>
+      <p class="tagline reveal in d3">Помогаю мужчинам и женщинам <b>убрать лишний жир, набрать мышцы и стать сильнее</b> — по системе, проверенной на пути от первого жима до МСМК. Онлайн, из любого города.</p>
+      <div class="hero-cta reveal in d4">
+        <a class="btn" href="#programs">Выбрать программу</a>
+        <a class="btn btn-ghost" href="#coaching">Личное ведение</a>
+      </div>
+    </div>
+    <div class="photo-frame reveal in d3">
+      <div class="photo-slot"><img src="hero.jpg" alt="Илья Ярошевич — МСМК по жиму лёжа"></div>
+    </div>
+  </div>
+  <div class="scroll-cue">Скролль</div>
+</header>
+
+<!-- ===== БЕГУЩАЯ СТРОКА ===== -->
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>МСМК <b>·</b> Жим лёжа</span><span>Онлайн-ведение <b>·</b> Весь мир</span><span>Жиросжигание <b>·</b> Масса <b>·</b> Сила</span><span>Техника под контролем</span><span>Прогресс в цифрах</span>
+    <span>МСМК <b>·</b> Жим лёжа</span><span>Онлайн-ведение <b>·</b> Весь мир</span><span>Жиросжигание <b>·</b> Масса <b>·</b> Сила</span><span>Техника под контролем</span><span>Прогресс в цифрах</span>
+  </div>
+</div>
+
+<!-- ===== РЕГАЛИИ ===== -->
+<div class="creds">
+  <div class="wrap row">
+    <div class="cred reveal"><div class="big">МСМК</div><p>по жиму штанги лёжа — подтверждённый титул, а не «сертификат за выходные»</p></div>
+    <div class="cred reveal d1"><div class="big">210 кг</div><p>лучший результат в жиме лёжа на официальных соревнованиях</p></div>
+    <div class="cred reveal d2"><div class="big">10+ лет</div><p>тренировочного и соревновательного опыта: периодизация, питание, восстановление</p></div>
+    <div class="cred reveal d3"><div class="big">Из ИТ</div><p>строю тренировки как системы: цифры, трекинг, измеримый прогресс</p></div>
+  </div>
+</div>
+
+<!-- ===== ОБО МНЕ ===== -->
+<section class="about" id="about">
+  <div class="wrap grid">
+    <div class="reveal">
+      <div class="eyebrow">Обо мне</div>
+      <h2>От первых 60 кг на штанге — <em>до международного мастера</em></h2>
+      <div class="pull">Теперь я провожу по этому пути других — короче и без ошибок, которые совершил сам.</div>
+    </div>
+    <div class="reveal d2">
+      <p><strong>Звание МСМК нельзя купить или получить на курсах выходного дня.</strong> За ним — годы методичной работы: периодизация нагрузок, питание под цель, восстановление, работа с отказами и плато. Всё это я испытал на себе, прежде чем давать другим.</p>
+      <p>Я работаю с разными задачами — <strong>жиросжигание, набор мышечной массы, рост силовых</strong> — потому что в основе всех трёх лежит одно: грамотная база, прогрессия нагрузки и питание, которое можно соблюдать. Меняются только акценты.</p>
+      <p>Параллельно я годами работал в ИТ — поэтому мои планы построены для людей с реальной жизнью: работа, семья, командировки. В моей системе всё измеримо: замеры, графики, еженедельные отчёты — прогресс виден в цифрах, а не «на ощущениях».</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ПРЕИМУЩЕСТВА ===== -->
+<section class="adv" id="advantages">
+  <div class="wrap">
+    <div class="eyebrow reveal">Преимущества</div>
+    <h2 class="reveal d1">Почему со мной получится</h2>
+    <div>
+      <div class="adv-item reveal"><div class="n">01</div><h3>Титул, а не сертификат</h3><p>МСМК по жиму лёжа — официальное спортивное звание международного уровня. Я отвечаю за методику собственным результатом на помосте.</p></div>
+      <div class="adv-item reveal d1"><div class="n">02</div><h3>Индивидуальный план</h3><p>Анкета по здоровью, опыту, графику и инвентарю — программа строится под тебя, а не подгоняет тебя под шаблон. Травмы и ограничения учитываются с первого дня.</p></div>
+      <div class="adv-item reveal d2"><div class="n">03</div><h3>Техника под контролем</h3><p>Разбираю твои видео с тренировок и присылаю правки. Безопасная техника — это и страховка от травм, и главный резерв роста весов.</p></div>
+      <div class="adv-item reveal d3"><div class="n">04</div><h3>Обратная связь без пауз</h3><p>Я на связи в мессенджере: вопросы по питанию, замена тренировки в командировке, срыв на празднике — корректирую план по ситуации, а не раз в месяц.</p></div>
+      <div class="adv-item reveal d4"><div class="n">05</div><h3>Прогресс в цифрах</h3><p>Еженедельные замеры, фото и силовые показатели в единой таблице. Ты видишь динамику на графике — это дисциплинирует лучше любой мотивации.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ТЕСТ ===== -->
+<section class="quiz" id="quiz">
+  <div class="wrap">
+    <div class="box reveal">
+      <div class="qz" id="qz">
+
+        <div class="qz-step active" data-step="0">
+          <h2>Не знаешь, с чего начать?</h2>
+          <p>Короткий тест: посчитаем твой индекс массы тела и подберём программу под цель — жиросжигание, масса или сила. 30 секунд, прямо здесь.</p>
+          <button class="btn qz-next" data-go="1">Пройти тест →</button>
+        </div>
+
+        <div class="qz-step" data-step="1">
+          <div class="qz-label">Шаг 1 из 3</div>
+          <h2>Твой пол</h2>
+          <div class="qz-options">
+            <button class="qz-opt" data-sex="m" data-go="2">Мужчина</button>
+            <button class="qz-opt" data-sex="f" data-go="2">Женщина</button>
+          </div>
+        </div>
+
+        <div class="qz-step" data-step="2">
+          <div class="qz-label">Шаг 2 из 3 · Индекс массы тела</div>
+          <h2>Рост и вес</h2>
+          <div class="qz-inputs">
+            <label>Рост, см <input type="number" id="qz-h" min="120" max="230" placeholder="180"></label>
+            <label>Вес, кг <input type="number" id="qz-w" min="35" max="250" placeholder="85"></label>
+            <button class="btn" id="qz-bmi-btn">Рассчитать</button>
+          </div>
+          <div class="qz-bmi" id="qz-bmi-out" hidden>
+            <div>Твой ИМТ: <b id="qz-bmi-val">—</b> · <span id="qz-bmi-cls">—</span></div>
+            <button class="btn qz-next" data-go="3">Дальше →</button>
+          </div>
+        </div>
+
+        <div class="qz-step" data-step="3">
+          <div class="qz-label">Шаг 3 из 3</div>
+          <h2>Что ближе к твоей цели?</h2>
+          <div class="qz-options">
+            <button class="qz-opt" data-goal="fat" data-go="res">Убрать жир и живот</button>
+            <button class="qz-opt" data-goal="mass" data-go="res">Набрать мышечную массу</button>
+            <button class="qz-opt" data-goal="bench" data-go="res">Стать сильнее: жим 100 кг</button>
+          </div>
+        </div>
+
+        <div class="qz-step" data-step="res">
+          <div class="qz-label">Твой результат</div>
+          <h2 id="qz-res-title">—</h2>
+          <p id="qz-res-text">—</p>
+          <div class="qz-res-actions">
+            <a class="btn" id="qz-res-link" href="#programs">Смотреть программу</a>
+            <a class="btn btn-ghost" href="#coaching">Хочу под личным контролем</a>
+          </div>
+          <button class="qz-restart" id="qz-restart">↻ Пройти ещё раз</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ПРОГРАММЫ ===== -->
+<section class="programs" id="programs">
+  <div class="wrap">
+    <div class="eyebrow reveal">Готовые программы</div>
+    <h2 class="reveal d1">Программы тренировок</h2>
+    <p class="lead reveal d2">Для самостоятельных: подробный план тренировок и питания + видео техники всех упражнений. Файлы приходят сразу после оплаты.</p>
+    <div class="prog-grid">
+      <div class="prog reveal">
+        <div class="aud">Мужчинам</div>
+        <h3>Руководство по жиросжиганию для мужчин</h3>
+        <p class="desc">Силовые 3 раза в неделю + питание с дефицитом без голода. Сохраняешь мышцы и силу, уходит жир. 12 недель, зал или дом.</p>
+        <div class="cost">4 990 ₽ <span>/ разово</span></div>
+        <div class="prog-actions">
+          <button class="btn-more" data-modal="m-fatburn-men">Подробнее</button>
+          <a class="btn btn-ghost" href="https://t.me/ilya_yaroshevich">Купить</a>
+        </div>
+      </div>
+      <div class="prog reveal d1">
+        <div class="aud">Девушкам</div>
+        <h3>Руководство по жиросжиганию для девушек</h3>
+        <p class="desc">Программа на снижение веса и упругость без «перекача»: силовые + шаги + питание с любимой едой. 12 недель.</p>
+        <div class="cost">4 990 ₽ <span>/ разово</span></div>
+        <div class="prog-actions">
+          <button class="btn-more" data-modal="m-fatburn-women">Подробнее</button>
+          <a class="btn btn-ghost" href="https://t.me/ilya_yaroshevich">Купить</a>
+        </div>
+      </div>
+      <div class="prog reveal d2">
+        <div class="aud">Новичкам</div>
+        <h3>Набор мышечной массы</h3>
+        <p class="desc">База телостроительства: 3 тренировки в неделю, прогрессия весов, питание в профицит без заплыва жиром.</p>
+        <div class="cost">3 990 ₽ <span>/ разово</span></div>
+        <div class="prog-actions">
+          <button class="btn-more" data-modal="m-mass">Подробнее</button>
+          <a class="btn btn-ghost" href="https://t.me/ilya_yaroshevich">Купить</a>
+        </div>
+      </div>
+      <div class="prog hot reveal d3">
+        <div class="aud">Фирменная · такой нет у других</div>
+        <h3>Жим 100: первая сотка</h3>
+        <p class="desc">Авторская программа: техника, подводки, периодизация — путь к жиму 100 кг и дальше. Для тех, кто хочет силу.</p>
+        <div class="cost">5 990 ₽ <span>/ разово</span></div>
+        <div class="prog-actions">
+          <button class="btn-more" data-modal="m-bench">Подробнее</button>
+          <a class="btn" href="https://t.me/ilya_yaroshevich">Купить</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ЛИЧНОЕ ВЕДЕНИЕ ===== -->
+<section class="lead-coach" id="coaching">
+  <div class="wrap">
+    <div class="eyebrow reveal">Флагман</div>
+    <h2 class="reveal d1">Личное онлайн-ведение</h2>
+    <p class="lead reveal d2">Максимальный формат: я веду тебя от диагностики до результата — любая цель, любой уровень подготовки.</p>
+    <div class="steps">
+      <div class="step reveal"><span class="n">01</span><h3>Анкета и созвон</h3><p>Здоровье, опыт, график, питание, инвентарь. Переводим цель в цифры, чтобы отслеживать прогресс объективно.</p></div>
+      <div class="step reveal d1"><span class="n">02</span><h3>Программа под тебя</h3><p>Тренировки, питание, восстановление и трекинг-таблица — всё в твоей папке, всегда под рукой.</p></div>
+      <div class="step reveal d2"><span class="n">03</span><h3>Видео-разбор техники</h3><p>Присылаешь видео подходов — получаешь разбор и правки. Еженедельные замеры и корректировка плана по факту.</p></div>
+      <div class="step reveal d3"><span class="n">04</span><h3>Связь каждый день</h3><p>Вопросы, срывы, командировки — пишешь в любой момент, я отвечаю и адаптирую план под жизнь.</p></div>
+    </div>
+    <div class="coach-offer reveal">
+      <div>
+        <div class="price">от 19 990 ₽ <span>/ месяц</span></div>
+        <p>Мест в ведении ограничено — я разбираю каждого клиента лично, без ассистентов и шаблонов.</p>
+      </div>
+      <a class="btn" href="https://t.me/ilya_yaroshevich">Оставить заявку</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ПОДАРОК ===== -->
+<section class="gift">
+  <div class="wrap">
+    <div class="box reveal">
+      <div>
+        <div class="eyebrow">Подарок</div>
+        <h2>Гайд «7 ошибок, из-за которых не уходит жир»</h2>
+        <p>Конкретные ошибки в питании, тренировках и режиме + фикс к каждой. Забери бесплатно в моём Telegram-боте.</p>
+      </div>
+      <a class="btn" href="https://t.me/ТВОЙ_БОТ">Забрать подарок</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ФУТЕР ===== -->
+<footer id="contacts">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h3>Илья Ярошевич</h3>
+        <p>Онлайн-тренер, МСМК по жиму штанги лёжа.<br>Сила. Форма. Система.</p>
+      </div>
+      <div>
+        <h3>Связь</h3>
+        <a href="https://t.me/ilya_yaroshevich">Telegram</a>
+        <a href="https://instagram.com/ТВОЙ_ПРОФИЛЬ">Instagram</a>
+        <a href="https://youtube.com/@ТВОЙ_КАНАЛ">YouTube</a>
+        <a href="mailto:почта@example.com">Почта</a>
+      </div>
+      <div>
+        <h3>Документы</h3>
+        <a href="#">Политика конфиденциальности</a>
+        <a href="#">Публичная оферта</a>
+      </div>
+    </div>
+    <div class="fine">© 2026 Илья Ярошевич · ИП/самозанятый: укажи реквизиты (ИНН/БИН) — обязательный элемент доверия и закона при приёме оплат</div>
+  </div>
+</footer>
+
+<!-- ===== МОДАЛЬНЫЕ ОКНА ПРОГРАММ ===== -->
+<div class="modal" id="m-fatburn-men" role="dialog" aria-modal="true">
+  <div class="backdrop" data-close></div>
+  <div class="panel">
+    <button class="close" data-close aria-label="Закрыть">×</button>
+    <div class="aud">Мужчинам · 12 недель</div>
+    <h3>Руководство по жиросжиганию для мужчин</h3>
+    <p>Полная система для снижения процента жира с <b>сохранением мышц и силы</b>. Построена на силовом тренинге и питании с умеренным дефицитом — без голода, без запрета любимой еды, без жизни в зале.</p>
+    <ul>
+      <li>Программа тренировок на 12 недель: 3 силовые в неделю, варианты для зала и дома</li>
+      <li>Пошаговая настройка питания: расчёт калорий и белка под твой вес и активность</li>
+      <li>Как вписать пиво, шашлык и дни рождения в дефицит без отката</li>
+      <li>Кардио и шаги: сколько на самом деле нужно (меньше, чем ты думаешь)</li>
+      <li>Видео-ссылки на технику всех упражнений</li>
+      <li>Таблица трекинга: вес, талия, силовые — прогресс в цифрах</li>
+    </ul>
+    <div class="m-cost">4 990 ₽ <span>/ разово · PDF, доступ навсегда</span></div>
+    <a class="btn" href="https://t.me/ilya_yaroshevich">Купить</a>
+    <p class="note">Файл придёт сразу после оплаты. Вопросы по программе — пиши в Telegram.</p>
+  </div>
+</div>
+
+<div class="modal" id="m-fatburn-women" role="dialog" aria-modal="true">
+  <div class="backdrop" data-close></div>
+  <div class="panel">
+    <button class="close" data-close aria-label="Закрыть">×</button>
+    <div class="aud">Девушкам · 12 недель</div>
+    <h3>Руководство по жиросжиганию для девушек</h3>
+    <p>Система снижения веса с акцентом на <b>упругость и форму, а не на «сушку»</b>. Силовые тренировки не сделают тебя «перекачанной» — они сделают фигуру подтянутой, а питание без жёстких запретов убережёт от срывов.</p>
+    <ul>
+      <li>Программа на 12 недель: 3 тренировки в неделю с акцентом на ягодицы и общий тонус</li>
+      <li>Питание без голодовок: расчёт калорий, белка и как не «убить» обмен веществ диетами</li>
+      <li>Почему вес на весах — не главный показатель, и что отслеживать вместо него</li>
+      <li>Сладкое и кафе с подругами — как вписать без чувства вины</li>
+      <li>Видео-ссылки на технику всех упражнений</li>
+      <li>Таблица трекинга замеров и фото-прогресса</li>
+    </ul>
+    <div class="m-cost">4 990 ₽ <span>/ разово · PDF, доступ навсегда</span></div>
+    <a class="btn" href="https://t.me/ilya_yaroshevich">Купить</a>
+    <p class="note">Файл придёт сразу после оплаты. Вопросы по программе — пиши в Telegram.</p>
+  </div>
+</div>
+
+<div class="modal" id="m-mass" role="dialog" aria-modal="true">
+  <div class="backdrop" data-close></div>
+  <div class="panel">
+    <button class="close" data-close aria-label="Закрыть">×</button>
+    <div class="aud">Новичкам · 12 недель</div>
+    <h3>Руководство по набору мышечной массы</h3>
+    <p>База телостроительства для тех, кто хочет <b>набрать мышцы, а не жир</b>. Первый год тренировок — время самого быстрого прогресса, если не растратить его на хаотичные тренировки из интернета.</p>
+    <ul>
+      <li>Программа на 12 недель: 3 тренировки фулбоди с прогрессией нагрузки</li>
+      <li>Питание в профицит: сколько есть, чтобы росли мышцы, а не живот</li>
+      <li>Главные упражнения и как их освоить безопасно с нуля</li>
+      <li>Сон и восстановление: почему мышцы растут не в зале</li>
+      <li>Видео-ссылки на технику всех упражнений</li>
+      <li>Таблица трекинга весов на штанге и замеров тела</li>
+    </ul>
+    <div class="m-cost">3 990 ₽ <span>/ разово · PDF, доступ навсегда</span></div>
+    <a class="btn" href="https://t.me/ilya_yaroshevich">Купить</a>
+    <p class="note">Файл придёт сразу после оплаты. Вопросы по программе — пиши в Telegram.</p>
+  </div>
+</div>
+
+<div class="modal" id="m-bench" role="dialog" aria-modal="true">
+  <div class="backdrop" data-close></div>
+  <div class="panel">
+    <button class="close" data-close aria-label="Закрыть">×</button>
+    <div class="aud">Фирменная программа · 12 недель</div>
+    <h3>Жим 100: первая сотка</h3>
+    <p>Авторская программа от мастера спорта международного класса. <b>100 кг в жиме лёжа — рубеж, который покоряется системе</b>, а не «потолку генетики». Здесь весь путь: техника, периодизация, подводки.</p>
+    <ul>
+      <li>Постановка соревновательной техники жима: мост, ноги, траектория, дыхание</li>
+      <li>12-недельная периодизация: объёмные, интенсивные и подводящие недели</li>
+      <li>Проценты от твоего максимума — программа подстраивается под любой стартовый уровень</li>
+      <li>Вспомогательные упражнения, которые реально двигают жим</li>
+      <li>Как правильно выходить на новый максимум и не «сгореть»</li>
+      <li>Видео-ссылки на технику + таблица прогрессии весов</li>
+    </ul>
+    <div class="m-cost">5 990 ₽ <span>/ разово · PDF, доступ навсегда</span></div>
+    <a class="btn" href="https://t.me/ilya_yaroshevich">Купить</a>
+    <p class="note">Файл придёт сразу после оплаты. Вопросы по программе — пиши в Telegram.</p>
+  </div>
+</div>
+
+<script>
+  // плавное появление блоков при скролле
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
+
+  // модальные окна программ
+  document.querySelectorAll('.btn-more').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.getElementById(btn.dataset.modal).classList.add('open');
+      document.body.style.overflow='hidden';
+    });
+  });
+  document.querySelectorAll('.modal [data-close]').forEach(el=>{
+    el.addEventListener('click',()=>{
+      el.closest('.modal').classList.remove('open');
+      document.body.style.overflow='';
+    });
+  });
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape'){
+      document.querySelectorAll('.modal.open').forEach(m=>m.classList.remove('open'));
+      document.body.style.overflow='';
+    }
+  });
+  // ===== интерактивный тест =====
+  const qz = {sex:null, bmi:null, goal:null};
+  const show = id => {
+    document.querySelectorAll('.qz-step').forEach(s=>s.classList.remove('active'));
+    document.querySelector(`.qz-step[data-step="${id}"]`).classList.add('active');
+  };
+  document.querySelectorAll('.qz-next').forEach(b=>b.addEventListener('click',()=>show(b.dataset.go)));
+  document.querySelectorAll('.qz-opt[data-sex]').forEach(b=>b.addEventListener('click',()=>{
+    qz.sex=b.dataset.sex; show(b.dataset.go);
+  }));
+  document.getElementById('qz-bmi-btn').addEventListener('click',()=>{
+    const h=+document.getElementById('qz-h').value, w=+document.getElementById('qz-w').value;
+    if(!h||!w||h<120||h>230||w<35||w>250){alert('Проверь рост и вес');return;}
+    qz.bmi=+(w/((h/100)**2)).toFixed(1);
+    let cls='нормальная масса тела';
+    if(qz.bmi<16) cls='выраженный дефицит массы';
+    else if(qz.bmi<18.5) cls='недостаточная масса тела';
+    else if(qz.bmi<25) cls='нормальная масса тела';
+    else if(qz.bmi<30) cls='избыточная масса тела';
+    else cls='ожирение — программа поможет, но сходи и к врачу';
+    document.getElementById('qz-bmi-val').textContent=qz.bmi;
+    document.getElementById('qz-bmi-cls').textContent=cls;
+    document.getElementById('qz-bmi-out').hidden=false;
+  });
+  document.querySelectorAll('.qz-opt[data-goal]').forEach(b=>b.addEventListener('click',()=>{
+    qz.goal=b.dataset.goal; qzResult(); show('res');
+  }));
+  function qzResult(){
+    const t=document.getElementById('qz-res-title'),
+          x=document.getElementById('qz-res-text'),
+          l=document.getElementById('qz-res-link');
+    const fatName = qz.sex==='f' ? 'Руководство по жиросжиганию для девушек' : 'Руководство по жиросжиганию для мужчин';
+    let title, text;
+    if(qz.goal==='fat'){
+      if(qz.bmi!==null && qz.bmi<18.5){
+        title='Руководство по набору мышечной массы';
+        text=`Твой ИМТ ${qz.bmi} — масса тела недостаточная. «Жир», который тебя смущает, уйдёт не от дефицита, а от набора мышц: они подтянут форму и разгонят расход энергии. Сначала набор — потом, если захочется, короткая сушка.`;
+      } else {
+        title=fatName;
+        text=`12 недель: умеренный дефицит без голода, силовые 3 раза в неделю, шаги. ${qz.bmi?`При твоём ИМТ ${qz.bmi} реалистичный результат за цикл — минус 6–12 кг и 5–10 см в талии.`:'Реалистичный результат за цикл — минус 6–12 кг.'}`;
+      }
+    } else if(qz.goal==='mass'){
+      if(qz.bmi!==null && qz.bmi>=27){
+        title=fatName;
+        text=`Твой ИМТ ${qz.bmi}. Совет от тренера: начни с 12 недель жиросжигания — на меньшем проценте жира набор идёт качественнее (больше мышц, меньше жира), и форма будет видна сразу. Потом — на массу.`;
+      } else {
+        title='Руководство по набору мышечной массы';
+        text='База телостроительства на 12 недель: профицит без заплыва жиром, фулбоди 3 раза в неделю, прогрессия весов. Реалистичный результат — +2–4 кг массы и рабочие веса ×1,5–2.';
+      }
+    } else {
+      title='Жим 100: первая сотка';
+      text='Авторская программа МСМК: соревновательная техника, 12-недельная периодизация двух жимовых дней + полный план на ноги, спину, плечи и руки.' +
+        (qz.bmi!==null && qz.bmi>=30 ? ' Параллельно рекомендую заглянуть в руководство по жиросжиганию — силе оно не помешает, а здоровью поможет.' : '');
+    }
+    t.textContent=title; x.textContent=text; l.href='#programs';
+  }
+  document.getElementById('qz-restart').addEventListener('click',()=>{
+    qz.sex=qz.bmi=qz.goal=null;
+    document.getElementById('qz-bmi-out').hidden=true;
+    document.getElementById('qz-h').value=''; document.getElementById('qz-w').value='';
+    show('0');
+  });
+</script>
+
+</body>
+</html>
