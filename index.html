@@ -10,15 +10,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --night:#0B121C;
-    --night-2:#101A26;
-    --navy:#16222F;
-    --navy-line:#24344A;
-    --bone:#F0ECE2;
-    --fog:#8E9CAE;
-    --bronze:#C08A5A;
-    --bronze-hi:#E2A86E;
-    --bronze-deep:#8F5F36;
+    --night:#0D0C0F;
+    --night-2:#121116;
+    --navy:#191720;
+    --navy-line:#2C2935;
+    --bone:#F4F1EC;
+    --fog:#9B96A6;
+    --bronze:#FF5A1F;
+    --bronze-hi:#FF7A45;
+    --bronze-deep:#C24417;
     --mono:'JetBrains Mono',monospace;
   }
   *{margin:0;padding:0;box-sizing:border-box}
@@ -52,11 +52,11 @@
     content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);
     transform:translateX(-120%);transition:transform .5s;
   }
-  .btn:hover{transform:translateY(-3px);box-shadow:0 14px 36px -10px rgba(192,138,90,.55)}
+  .btn:hover{transform:translateY(-3px);box-shadow:0 14px 36px -10px rgba(255,90,31,.55)}
   .btn:hover::before{transform:translateX(120%)}
   .btn:focus-visible{outline:3px solid var(--bone);outline-offset:3px}
   .btn-ghost{background:transparent;border:1px solid var(--navy-line);color:var(--bone)}
-  .btn-ghost:hover{border-color:var(--bronze);box-shadow:0 14px 36px -14px rgba(192,138,90,.4)}
+  .btn-ghost:hover{border-color:var(--bronze);box-shadow:0 14px 36px -14px rgba(255,90,31,.4)}
 
   /* появление при скролле */
   .reveal{opacity:0;transform:translateY(34px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
@@ -66,8 +66,8 @@
   /* ===== NAV ===== */
   nav{
     position:fixed;top:0;left:0;right:0;z-index:60;
-    background:rgba(11,18,28,.72);backdrop-filter:blur(14px);
-    border-bottom:1px solid rgba(36,52,74,.6);
+    background:rgba(13,12,15,.72);backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(44,41,53,.6);
   }
   nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
   .logo{font-family:'Oswald',sans-serif;font-weight:700;font-size:19px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none}
@@ -85,15 +85,15 @@
   .hero{
     min-height:100svh;display:flex;align-items:center;padding:130px 0 70px;
     background:
-      radial-gradient(1100px 620px at 78% 12%, rgba(192,138,90,.13) 0%, transparent 55%),
-      radial-gradient(800px 600px at 8% 92%, rgba(34,56,84,.55) 0%, transparent 60%),
+      radial-gradient(1100px 620px at 78% 12%, rgba(255,90,31,.13) 0%, transparent 55%),
+      radial-gradient(800px 600px at 8% 92%, rgba(50,38,60,.55) 0%, transparent 60%),
       var(--night);
   }
   /* гигантский водяной знак */
   .hero .watermark{
     position:absolute;right:-2%;top:8%;font-family:'Oswald',sans-serif;font-weight:700;
     font-size:clamp(160px,28vw,380px);line-height:.9;color:transparent;
-    -webkit-text-stroke:1px rgba(192,138,90,.14);user-select:none;pointer-events:none;
+    -webkit-text-stroke:1px rgba(255,90,31,.14);user-select:none;pointer-events:none;
     letter-spacing:.02em;
   }
   .hero .grid{display:grid;grid-template-columns:1.25fr 1fr;gap:60px;align-items:center;position:relative}
@@ -109,7 +109,7 @@
     display:inline-flex;align-items:center;gap:12px;margin:30px 0 6px;
     font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--bone);
     border:1px solid var(--bronze-deep);border-radius:99px;padding:10px 20px;
-    background:rgba(192,138,90,.08);
+    background:rgba(255,90,31,.08);
   }
   .hero .rank::before{content:"●";color:var(--bronze-hi);font-size:9px}
   .hero .tagline{color:var(--fog);max-width:540px;margin:22px 0 42px;font-size:18px}
@@ -193,7 +193,7 @@
     content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--bronze);
     transform:scaleY(0);transition:transform .25s;transform-origin:top;
   }
-  .adv-item:hover{background:rgba(22,34,47,.5);padding-left:30px}
+  .adv-item:hover{background:rgba(25,23,32,.5);padding-left:30px}
   .adv-item:hover::before{transform:scaleY(1)}
   .adv-item .n{
     font-family:'Oswald',sans-serif;font-size:44px;font-weight:700;line-height:1;
@@ -213,7 +213,7 @@
   }
   .quiz .box::before{
     content:"?";position:absolute;right:30px;top:-50px;font-family:'Oswald',sans-serif;font-weight:700;
-    font-size:300px;color:transparent;-webkit-text-stroke:1px rgba(192,138,90,.16);line-height:1;pointer-events:none;
+    font-size:300px;color:transparent;-webkit-text-stroke:1px rgba(255,90,31,.16);line-height:1;pointer-events:none;
   }
   .quiz h2{font-size:clamp(24px,3.2vw,34px);max-width:560px;position:relative}
   .quiz p{color:var(--fog);margin-top:12px;max-width:540px;position:relative}
@@ -225,15 +225,15 @@
   .qz .btn{margin-top:22px}
   .qz-options{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
   .qz-opt{
-    background:rgba(11,18,28,.55);border:1px solid var(--navy-line);color:var(--bone);cursor:pointer;
+    background:rgba(13,12,15,.55);border:1px solid var(--navy-line);color:var(--bone);cursor:pointer;
     font-family:'Oswald',sans-serif;font-weight:600;font-size:15px;letter-spacing:.05em;text-transform:uppercase;
     padding:18px 28px;border-radius:6px;transition:all .2s;
   }
-  .qz-opt:hover{border-color:var(--bronze);background:rgba(192,138,90,.12);transform:translateY(-2px)}
+  .qz-opt:hover{border-color:var(--bronze);background:rgba(255,90,31,.12);transform:translateY(-2px)}
   .qz-inputs{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end;margin-top:22px}
   .qz-inputs label{display:flex;flex-direction:column;gap:7px;font-size:13.5px;color:var(--fog)}
   .qz-inputs input{
-    width:130px;background:rgba(11,18,28,.6);border:1px solid var(--navy-line);border-radius:6px;
+    width:130px;background:rgba(13,12,15,.6);border:1px solid var(--navy-line);border-radius:6px;
     color:var(--bone);font-family:var(--mono);font-size:18px;padding:13px 14px;outline:none;transition:border-color .2s;
   }
   .qz-inputs input:focus{border-color:var(--bronze)}
@@ -270,9 +270,20 @@
   .prog .cost{font-family:'Oswald',sans-serif;font-size:26px;font-weight:600;margin-bottom:18px}
   .prog .cost span{font-size:13px;color:var(--fog);font-family:'Manrope',sans-serif;font-weight:400;text-transform:none}
   .prog .btn{padding:14px 18px;font-size:13px;text-align:center}
-  .prog.hot{border-color:var(--bronze);background:linear-gradient(160deg,rgba(192,138,90,.10),var(--navy) 55%)}
+  .prog.hot{border-color:var(--bronze);background:linear-gradient(160deg,rgba(255,90,31,.10),var(--navy) 55%)}
   .prog.hot::before{transform:scaleX(1)}
   .prog.hot .aud{color:var(--bronze-hi)}
+  /* тематический водяной знак карточки; чтобы заменить на фото:
+     уберите ::after и добавьте карточке background:
+     linear-gradient(rgba(25,23,32,.88),rgba(25,23,32,.96)), url('prog1.jpg') center/cover */
+  .prog::after{
+    content:attr(data-mark);position:absolute;right:-6px;bottom:-14px;z-index:0;
+    font-family:'Oswald',sans-serif;font-weight:700;font-size:74px;line-height:1;
+    color:transparent;-webkit-text-stroke:1.1px rgba(255,90,31,.16);
+    text-transform:uppercase;pointer-events:none;white-space:nowrap;
+  }
+  .prog:hover::after{-webkit-text-stroke-color:rgba(255,90,31,.3)}
+  .prog>*{position:relative;z-index:1}
   .prog-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
   .prog-actions .btn{padding:14px 10px}
   .btn-more{
@@ -305,12 +316,45 @@
   .modal p b{color:var(--bone)}
   .modal ul{list-style:none;margin:18px 0 24px}
   .modal li{
-    font-size:15px;padding:10px 0 10px 28px;position:relative;border-bottom:1px solid rgba(36,52,74,.6);
+    font-size:15px;padding:10px 0 10px 28px;position:relative;border-bottom:1px solid rgba(44,41,53,.6);
   }
   .modal li::before{content:"▸";position:absolute;left:4px;color:var(--bronze-hi)}
   .modal .m-cost{font-family:'Oswald',sans-serif;font-size:26px;font-weight:600;margin:8px 0 18px}
   .modal .m-cost span{font-size:13px;color:var(--fog);font-family:'Manrope',sans-serif;font-weight:400}
   .modal .note{font-size:13px;color:var(--fog);margin-top:18px;border-top:1px solid var(--navy-line);padding-top:14px}
+  .modal .m-body{display:grid;grid-template-columns:170px 1fr;gap:26px;align-items:start}
+  .modal .m-shots{display:flex;flex-direction:column;gap:12px;position:sticky;top:0}
+  .modal .m-shots img{
+    width:100%;display:block;border:1px solid var(--navy-line);border-radius:8px;
+    box-shadow:0 14px 30px -16px rgba(0,0,0,.7);transition:transform .2s,border-color .2s;
+  }
+  .modal .m-shots img:hover{transform:scale(1.04);border-color:var(--bronze)}
+  #m-fatburn-men .panel,#m-fatburn-women .panel,#m-mass .panel,#m-bench .panel{max-width:760px}
+  @media(max-width:640px){
+    .modal .m-body{grid-template-columns:1fr}
+    .modal .m-shots{flex-direction:row;position:static}
+    .modal .m-shots img{width:48%}
+  }
+  .gift-form{display:flex;flex-direction:column;gap:13px;margin-top:22px}
+  .gift-form input[type=text],.gift-form input[type=tel],.gift-form input[type=email]{
+    background:rgba(13,12,15,.6);border:1px solid var(--navy-line);border-radius:6px;
+    color:var(--bone);font-family:'Manrope',sans-serif;font-size:15.5px;padding:15px 16px;
+    outline:none;transition:border-color .2s;width:100%;
+  }
+  .gift-form input:focus{border-color:var(--bronze)}
+  .gift-form input::placeholder,.gift-form textarea::placeholder{color:#5e6c7d}
+  .gift-form textarea{
+    background:rgba(13,12,15,.6);border:1px solid var(--navy-line);border-radius:6px;
+    color:var(--bone);font-family:'Manrope',sans-serif;font-size:15.5px;padding:15px 16px;
+    outline:none;transition:border-color .2s;width:100%;resize:vertical;
+  }
+  .gift-form textarea:focus{border-color:var(--bronze)}
+  .coach-actions{display:flex;gap:12px;flex-wrap:wrap}
+  .coach-actions .btn-more{padding:17px 30px;font-size:14px}
+  .gf-consent{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--fog);cursor:pointer}
+  .gf-consent input{margin-top:3px;accent-color:var(--bronze)}
+  .gift-form .btn{margin-top:6px;text-align:center}
+  .gf-err{color:#e07a6a;font-size:13.5px}
 
   /* ===== ВЕДЕНИЕ ===== */
   .lead-coach h2{font-size:clamp(28px,3.8vw,44px);margin-bottom:16px}
@@ -331,7 +375,7 @@
     position:relative;display:flex;justify-content:space-between;align-items:center;gap:34px;flex-wrap:wrap;
     border:1px solid var(--bronze-deep);border-radius:14px;padding:44px 46px;overflow:hidden;
     background:
-      radial-gradient(600px 300px at 0% 0%, rgba(192,138,90,.16), transparent 60%),
+      radial-gradient(600px 300px at 0% 0%, rgba(255,90,31,.16), transparent 60%),
       var(--navy);
   }
   .coach-offer .price{font-family:'Oswald',sans-serif;font-size:clamp(30px,4vw,42px);font-weight:700}
@@ -340,12 +384,22 @@
 
   /* ===== ПОДАРОК ===== */
   .gift{padding:0 0 110px}
+  .gift-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
   .gift .box{
-    position:relative;border-radius:14px;padding:60px 54px;overflow:hidden;
+    position:relative;border-radius:14px;padding:48px 44px;overflow:hidden;height:100%;
     background:linear-gradient(115deg,var(--bronze-deep) 0%,var(--bronze) 60%,var(--bronze-hi) 100%);
     color:#1A1208;
-    display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap;
+    display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;gap:30px;
   }
+  .gift .box-dark{
+    background:var(--navy);border:1px solid var(--bronze);color:var(--bone);
+  }
+  .gift .box-dark h2{color:var(--bone)}
+  .gift .box-dark p{color:var(--fog)}
+  .gift .box-dark .eyebrow{color:var(--bronze-hi)}
+  .gift .box-dark .eyebrow::before{background:var(--bronze-hi)}
+  .gift .box-dark .btn{background:var(--bronze);color:#1A1208}
+  @media(max-width:860px){.gift-grid{grid-template-columns:1fr}}
   .gift h2{font-size:clamp(24px,3.2vw,34px);max-width:600px}
   .gift p{margin-top:12px;max-width:560px;color:#2E2212;font-weight:500}
   .gift .eyebrow{color:#3A2A14}
@@ -369,6 +423,13 @@
     .scroll-cue{animation:none}
     .btn:hover,.prog:hover,.step:hover{transform:none}
   }
+  /* ОГОНЬ: наклон, свечение */
+  .marquee{border-block:2px solid var(--bronze)}
+  .marquee span{color:var(--bone)}
+  .btn{box-shadow:0 0 28px -8px rgba(255,90,31,.55)}
+  .btn:hover{box-shadow:0 0 44px -6px rgba(255,90,31,.85);transform:translateY(-3px) scale(1.02)}
+  .hero .watermark{-webkit-text-stroke-color:rgba(255,90,31,.22)}
+  .prog.hot{box-shadow:0 0 40px -18px rgba(255,90,31,.5)}
 </style>
 </head>
 <body>
@@ -395,7 +456,7 @@
       <div class="eyebrow reveal in">Онлайн-тренер · сила и композиция тела</div>
       <h1 class="name reveal in d1">
         <span class="ghost">Илья</span>
-        <span class="solid">Яроше<em>вич</em></span>
+        <span class="solid"><em>Ярошевич</em></span>
       </h1>
       <div class="rank reveal in d2">Мастер спорта международного класса · жим лёжа</div>
       <p class="tagline reveal in d3">Помогаю мужчинам и женщинам <b>убрать лишний жир, набрать мышцы и стать сильнее</b> — по системе, проверенной на пути от первого жима до МСМК. Онлайн, из любого города.</p>
@@ -414,8 +475,8 @@
 <!-- ===== БЕГУЩАЯ СТРОКА ===== -->
 <div class="marquee" aria-hidden="true">
   <div class="track">
-    <span>МСМК <b>·</b> Жим лёжа</span><span>Онлайн-ведение <b>·</b> Весь мир</span><span>Жиросжигание <b>·</b> Масса <b>·</b> Сила</span><span>Техника под контролем</span><span>Прогресс в цифрах</span>
-    <span>МСМК <b>·</b> Жим лёжа</span><span>Онлайн-ведение <b>·</b> Весь мир</span><span>Жиросжигание <b>·</b> Масса <b>·</b> Сила</span><span>Техника под контролем</span><span>Прогресс в цифрах</span>
+    <span>МСМК <b>·</b> Жим лёжа</span><span>Онлайн-ведение</span><span>Жиросжигание <b>·</b> Масса <b>·</b> Сила</span><span>Техника под контролем</span><span>Прогресс в цифрах</span>
+    <span>МСМК <b>·</b> Жим лёжа</span><span>Онлайн-ведение</span><span>Жиросжигание <b>·</b> Масса <b>·</b> Сила</span><span>Техника под контролем</span><span>Прогресс в цифрах</span>
   </div>
 </div>
 
@@ -501,7 +562,7 @@
           <div class="qz-options">
             <button class="qz-opt" data-goal="fat" data-go="res">Убрать жир и живот</button>
             <button class="qz-opt" data-goal="mass" data-go="res">Набрать мышечную массу</button>
-            <button class="qz-opt" data-goal="bench" data-go="res">Стать сильнее: жим 100 кг</button>
+            <button class="qz-opt" id="qz-bench-opt" data-goal="bench" data-go="res">Стать сильнее: жим 100 кг</button>
           </div>
         </div>
 
@@ -528,7 +589,7 @@
     <h2 class="reveal d1">Программы тренировок</h2>
     <p class="lead reveal d2">Для самостоятельных: подробный план тренировок и питания + видео техники всех упражнений. Файлы приходят сразу после оплаты.</p>
     <div class="prog-grid">
-      <div class="prog reveal">
+      <div class="prog reveal" data-mark="−ЖИР">
         <div class="aud">Мужчинам</div>
         <h3>Руководство по жиросжиганию для мужчин</h3>
         <p class="desc">Силовые 3 раза в неделю + питание с дефицитом без голода. Сохраняешь мышцы и силу, уходит жир. 12 недель, зал или дом.</p>
@@ -538,7 +599,7 @@
           <a class="btn btn-ghost" href="https://t.me/ilya_yaroshevich">Купить</a>
         </div>
       </div>
-      <div class="prog reveal d1">
+      <div class="prog reveal d1" data-mark="ТОНУС">
         <div class="aud">Девушкам</div>
         <h3>Руководство по жиросжиганию для девушек</h3>
         <p class="desc">Программа на снижение веса и упругость без «перекача»: силовые + шаги + питание с любимой едой. 12 недель.</p>
@@ -548,7 +609,7 @@
           <a class="btn btn-ghost" href="https://t.me/ilya_yaroshevich">Купить</a>
         </div>
       </div>
-      <div class="prog reveal d2">
+      <div class="prog reveal d2" data-mark="+МАССА">
         <div class="aud">Новичкам</div>
         <h3>Набор мышечной массы</h3>
         <p class="desc">База телостроительства: 3 тренировки в неделю, прогрессия весов, питание в профицит без заплыва жиром.</p>
@@ -558,7 +619,7 @@
           <a class="btn btn-ghost" href="https://t.me/ilya_yaroshevich">Купить</a>
         </div>
       </div>
-      <div class="prog hot reveal d3">
+      <div class="prog hot reveal d3" data-mark="100 КГ">
         <div class="aud">Фирменная · такой нет у других</div>
         <h3>Жим 100: первая сотка</h3>
         <p class="desc">Авторская программа: техника, подводки, периодизация — путь к жиму 100 кг и дальше. Для тех, кто хочет силу.</p>
@@ -587,23 +648,36 @@
     <div class="coach-offer reveal">
       <div>
         <div class="price">от 19 990 ₽ <span>/ месяц</span></div>
-        <p>Мест в ведении ограничено — я разбираю каждого клиента лично, без ассистентов и шаблонов.</p>
+        <p>Мест в ведении ограничено — я разбираю каждого клиента лично, без ассистентов и шаблонов. После заявки свяжусь с тобой в течение 24 часов.</p>
       </div>
-      <a class="btn" href="https://t.me/ilya_yaroshevich">Оставить заявку</a>
+      <div class="coach-actions">
+        <button class="btn-more" data-modal-open="m-coaching">Подробнее</button>
+        <button class="btn" data-modal-open="m-order">Заказать</button>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ===== ПОДАРОК ===== -->
+<!-- ===== ПОДАРКИ ===== -->
 <section class="gift">
   <div class="wrap">
-    <div class="box reveal">
-      <div>
-        <div class="eyebrow">Подарок</div>
-        <h2>Гайд «7 ошибок, из-за которых не уходит жир»</h2>
-        <p>Конкретные ошибки в питании, тренировках и режиме + фикс к каждой. Забери бесплатно в моём Telegram-боте.</p>
+    <div class="gift-grid">
+      <div class="box reveal">
+        <div>
+          <div class="eyebrow">Подарок · жиросжигание</div>
+          <h2>Гайд «7 ошибок, из-за которых не уходит жир»</h2>
+          <p>Конкретные ошибки в питании, тренировках и режиме + фикс к каждой. Забери бесплатно.</p>
+        </div>
+        <button class="btn" id="gift-open">Забрать подарок</button>
       </div>
-      <a class="btn" href="https://t.me/ТВОЙ_БОТ">Забрать подарок</a>
+      <div class="box box-dark reveal d1">
+        <div>
+          <div class="eyebrow">Подарок · сила</div>
+          <h2>«Почему твой жим стоит: 5 ошибок» + чек-лист сетапа</h2>
+          <p>Разбор техники от МСМК: исправь — и добавь 5–10 кг к жиму без лишних тренировок.</p>
+        </div>
+        <button class="btn" id="gift2-open">Забрать чек-лист</button>
+      </div>
     </div>
   </div>
 </section>
@@ -633,11 +707,142 @@
   </div>
 </footer>
 
+<!-- ===== МОДАЛКА: ЛИЧНОЕ ВЕДЕНИЕ ПОДРОБНО ===== -->
+<div class="modal" id="m-coaching" role="dialog" aria-modal="true">
+  <div class="backdrop" data-close></div>
+  <div class="panel">
+    <button class="close" data-close aria-label="Закрыть">×</button>
+    <div class="aud">Флагман · онлайн, из любого города</div>
+    <h3>Личное онлайн-ведение</h3>
+    <p><b>1. Диагностика.</b> Подробная анкета и созвон: здоровье, травмы, опыт, график, питание,
+    инвентарь. Я переведу твою цель в цифры — вес, замеры, силовые — чтобы прогресс был измеримым,
+    а не «на ощущениях».</p>
+    <p><b>2. Цели на каждую неделю.</b> Большая цель режется на недельные шаги: первые недели —
+    питание и режим, дальше — техника по видео и прогрессия нагрузок. Ты всегда знаешь, что делать
+    именно сейчас.</p>
+    <p><b>3. План под тебя.</b> Тренировки (зал или дом), питание под твою жизнь без запретов,
+    при необходимости — базовые добавки. Всё лежит в твоей личной папке, к старым записям можно
+    вернуться в любой момент.</p>
+    <p><b>4. Отчёты и корректировки.</b> Раз в неделю — замеры и фото, разбор отчёта, правки плана
+    по факту: командировка, срыв, болезнь — система подстраивается, а не ломается.</p>
+    <p><b>5. Связь каждый день.</b> Вопрос по еде, технике, самочувствию — пишешь в Telegram
+    в любой момент, я отвечаю развёрнуто и быстро. Видео твоих подходов разбираю после каждой
+    тренировки.</p>
+    <div class="m-cost">от 19 990 ₽ <span>/ месяц</span></div>
+    <button class="btn" data-modal-open="m-order" data-close-first="m-coaching">Заказать</button>
+    <p class="note">Первые 14 дней: выполняешь программу, но формат не подошёл — верну деньги полностью.</p>
+  </div>
+</div>
+
+<!-- ===== МОДАЛКА: ЗАЯВКА НА ВЕДЕНИЕ ===== -->
+<div class="modal" id="m-order" role="dialog" aria-modal="true">
+  <div class="backdrop" data-close></div>
+  <div class="panel">
+    <button class="close" data-close aria-label="Закрыть">×</button>
+    <div id="order-form-view">
+      <div class="aud">Заявка на личное ведение</div>
+      <h3>Оставь контакты</h3>
+      <p>Свяжусь с тобой в течение 24 часов: зададим друг другу вопросы и решим, подходим ли мы
+      друг другу. Заявка ни к чему не обязывает.</p>
+      <form id="order-form" class="gift-form" novalidate>
+        <input type="text"  id="of-name"  placeholder="Твоё имя" autocomplete="name" required>
+        <input type="tel"   id="of-phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" required>
+        <input type="email" id="of-email" placeholder="Электронная почта" autocomplete="email" required>
+        <textarea id="of-goal" placeholder="Пара слов о цели: например, «убрать 10 кг, пробовал зал — бросил»" rows="3"></textarea>
+        <label class="gf-consent">
+          <input type="checkbox" id="of-agree" checked>
+          <span>Я даю согласие на обработку персональных данных</span>
+        </label>
+        <button type="submit" class="btn" id="of-submit">Отправить заявку</button>
+        <p class="gf-err" id="of-err" hidden>Заполни все поля корректно.</p>
+      </form>
+    </div>
+    <div id="order-done-view" hidden>
+      <div class="aud">Заявка принята ✓</div>
+      <h3>Свяжусь с тобой в течение 24 часов</h3>
+      <p>А если не хочешь ждать — напиши мне в Telegram прямо сейчас, отвечу лично.</p>
+      <a class="btn" href="https://t.me/ilya_yaroshevich">Написать в Telegram</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== МОДАЛКА ПОДАРКА ===== -->
+<div class="modal" id="m-gift" role="dialog" aria-modal="true">
+  <div class="backdrop" data-close></div>
+  <div class="panel">
+    <button class="close" data-close aria-label="Закрыть">×</button>
+    <div id="gift-form-view">
+      <div class="aud">Бесплатный гайд</div>
+      <h3>«7 ошибок, из-за которых не уходит жир»</h3>
+      <p>Оставь контакты — пришлю гайд и буду изредка делиться рабочими материалами по тренировкам и питанию. Без спама.</p>
+      <form id="gift-form" class="gift-form" novalidate>
+        <input type="text"  id="gf-name"  placeholder="Твоё имя" autocomplete="name" required>
+        <input type="tel"   id="gf-phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" required>
+        <input type="email" id="gf-email" placeholder="Электронная почта" autocomplete="email" required>
+        <label class="gf-consent">
+          <input type="checkbox" id="gf-agree" checked>
+          <span>Я даю согласие на обработку персональных данных</span>
+        </label>
+        <button type="submit" class="btn" id="gf-submit">Получить гайд</button>
+        <p class="gf-err" id="gf-err" hidden>Заполни все поля корректно.</p>
+      </form>
+    </div>
+    <div id="gift-done-view" hidden>
+      <div class="aud">Готово!</div>
+      <h3>Гайд твой 💪</h3>
+      <p id="gift-done-text">Забирай прямо сейчас — и загляни в Telegram: туда я отправляю все материалы и отвечаю на вопросы лично.</p>
+      <div class="qz-res-actions">
+        <a class="btn" href="guide7.pdf" download>Скачать гайд (PDF)</a>
+        <a class="btn btn-ghost" href="https://t.me/ТВОЙ_БОТ?start=guide">Получить в Telegram</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== МОДАЛКА ПОДАРКА 2: ЖИМ ===== -->
+<div class="modal" id="m-gift2" role="dialog" aria-modal="true">
+  <div class="backdrop" data-close></div>
+  <div class="panel">
+    <button class="close" data-close aria-label="Закрыть">×</button>
+    <div id="gift2-form-view">
+      <div class="aud">Бесплатный гайд · от МСМК</div>
+      <h3>«Почему твой жим стоит: 5 ошибок» + чек-лист</h3>
+      <p>Оставь контакты — пришлю гайд и буду изредка делиться рабочими материалами по силовому тренингу. Без спама.</p>
+      <form id="gift2-form" class="gift-form" novalidate>
+        <input type="text"  id="g2-name"  placeholder="Твоё имя" autocomplete="name" required>
+        <input type="tel"   id="g2-phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" required>
+        <input type="email" id="g2-email" placeholder="Электронная почта" autocomplete="email" required>
+        <label class="gf-consent">
+          <input type="checkbox" id="g2-agree" checked>
+          <span>Я даю согласие на обработку персональных данных</span>
+        </label>
+        <button type="submit" class="btn" id="g2-submit">Получить гайд</button>
+        <p class="gf-err" id="g2-err" hidden>Заполни все поля корректно.</p>
+      </form>
+    </div>
+    <div id="gift2-done-view" hidden>
+      <div class="aud">Готово!</div>
+      <h3>Чек-лист твой 🏋️</h3>
+      <p>Забирай — и сверяйся с ним в зале перед каждым подходом. Вопросы по технике — пиши в Telegram.</p>
+      <div class="qz-res-actions">
+        <a class="btn" href="gift_zhim.pdf" download>Скачать гайд (PDF)</a>
+        <a class="btn btn-ghost" href="https://t.me/ТВОЙ_БОТ?start=bench">Получить в Telegram</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ===== МОДАЛЬНЫЕ ОКНА ПРОГРАММ ===== -->
 <div class="modal" id="m-fatburn-men" role="dialog" aria-modal="true">
   <div class="backdrop" data-close></div>
   <div class="panel">
     <button class="close" data-close aria-label="Закрыть">×</button>
+    <div class="m-body">
+      <div class="m-shots">
+        <img src="prev_fatmen_1.jpg" alt="Превью гайда — обложка" loading="lazy">
+        <img src="prev_fatmen_2.jpg" alt="Превью гайда — страница" loading="lazy">
+      </div>
+      <div class="m-info">
     <div class="aud">Мужчинам · 12 недель</div>
     <h3>Руководство по жиросжиганию для мужчин</h3>
     <p>Полная система для снижения процента жира с <b>сохранением мышц и силы</b>. Построена на силовом тренинге и питании с умеренным дефицитом — без голода, без запрета любимой еды, без жизни в зале.</p>
@@ -652,6 +857,8 @@
     <div class="m-cost">4 990 ₽ <span>/ разово · PDF, доступ навсегда</span></div>
     <a class="btn" href="https://t.me/ilya_yaroshevich">Купить</a>
     <p class="note">Файл придёт сразу после оплаты. Вопросы по программе — пиши в Telegram.</p>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -659,6 +866,12 @@
   <div class="backdrop" data-close></div>
   <div class="panel">
     <button class="close" data-close aria-label="Закрыть">×</button>
+    <div class="m-body">
+      <div class="m-shots">
+        <img src="prev_fatwomen_1.jpg" alt="Превью гайда — обложка" loading="lazy">
+        <img src="prev_fatwomen_2.jpg" alt="Превью гайда — страница" loading="lazy">
+      </div>
+      <div class="m-info">
     <div class="aud">Девушкам · 12 недель</div>
     <h3>Руководство по жиросжиганию для девушек</h3>
     <p>Система снижения веса с акцентом на <b>упругость и форму, а не на «сушку»</b>. Силовые тренировки не сделают тебя «перекачанной» — они сделают фигуру подтянутой, а питание без жёстких запретов убережёт от срывов.</p>
@@ -673,6 +886,8 @@
     <div class="m-cost">4 990 ₽ <span>/ разово · PDF, доступ навсегда</span></div>
     <a class="btn" href="https://t.me/ilya_yaroshevich">Купить</a>
     <p class="note">Файл придёт сразу после оплаты. Вопросы по программе — пиши в Telegram.</p>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -680,6 +895,12 @@
   <div class="backdrop" data-close></div>
   <div class="panel">
     <button class="close" data-close aria-label="Закрыть">×</button>
+    <div class="m-body">
+      <div class="m-shots">
+        <img src="prev_mass_1.jpg" alt="Превью гайда — обложка" loading="lazy">
+        <img src="prev_mass_2.jpg" alt="Превью гайда — страница" loading="lazy">
+      </div>
+      <div class="m-info">
     <div class="aud">Новичкам · 12 недель</div>
     <h3>Руководство по набору мышечной массы</h3>
     <p>База телостроительства для тех, кто хочет <b>набрать мышцы, а не жир</b>. Первый год тренировок — время самого быстрого прогресса, если не растратить его на хаотичные тренировки из интернета.</p>
@@ -694,6 +915,8 @@
     <div class="m-cost">3 990 ₽ <span>/ разово · PDF, доступ навсегда</span></div>
     <a class="btn" href="https://t.me/ilya_yaroshevich">Купить</a>
     <p class="note">Файл придёт сразу после оплаты. Вопросы по программе — пиши в Telegram.</p>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -701,6 +924,12 @@
   <div class="backdrop" data-close></div>
   <div class="panel">
     <button class="close" data-close aria-label="Закрыть">×</button>
+    <div class="m-body">
+      <div class="m-shots">
+        <img src="prev_bench_1.jpg" alt="Превью гайда — обложка" loading="lazy">
+        <img src="prev_bench_2.jpg" alt="Превью гайда — страница" loading="lazy">
+      </div>
+      <div class="m-info">
     <div class="aud">Фирменная программа · 12 недель</div>
     <h3>Жим 100: первая сотка</h3>
     <p>Авторская программа от мастера спорта международного класса. <b>100 кг в жиме лёжа — рубеж, который покоряется системе</b>, а не «потолку генетики». Здесь весь путь: техника, периодизация, подводки.</p>
@@ -715,6 +944,8 @@
     <div class="m-cost">5 990 ₽ <span>/ разово · PDF, доступ навсегда</span></div>
     <a class="btn" href="https://t.me/ilya_yaroshevich">Купить</a>
     <p class="note">Файл придёт сразу после оплаты. Вопросы по программе — пиши в Telegram.</p>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -752,7 +983,9 @@
   };
   document.querySelectorAll('.qz-next').forEach(b=>b.addEventListener('click',()=>show(b.dataset.go)));
   document.querySelectorAll('.qz-opt[data-sex]').forEach(b=>b.addEventListener('click',()=>{
-    qz.sex=b.dataset.sex; show(b.dataset.go);
+    qz.sex=b.dataset.sex;
+    document.getElementById('qz-bench-opt').style.display = qz.sex==='f' ? 'none' : '';
+    show(b.dataset.go);
   }));
   document.getElementById('qz-bmi-btn').addEventListener('click',()=>{
     const h=+document.getElementById('qz-h').value, w=+document.getElementById('qz-w').value;
@@ -778,9 +1011,12 @@
     const fatName = qz.sex==='f' ? 'Руководство по жиросжиганию для девушек' : 'Руководство по жиросжиганию для мужчин';
     let title, text;
     if(qz.goal==='fat'){
-      if(qz.bmi!==null && qz.bmi<18.5){
+      const low = qz.sex==='f' ? 19 : 18.5;
+      if(qz.bmi!==null && qz.bmi<low){
         title='Руководство по набору мышечной массы';
-        text=`Твой ИМТ ${qz.bmi} — масса тела недостаточная. «Жир», который тебя смущает, уйдёт не от дефицита, а от набора мышц: они подтянут форму и разгонят расход энергии. Сначала набор — потом, если захочется, короткая сушка.`;
+        text = qz.sex==='f'
+          ? `Твой ИМТ ${qz.bmi} — вес и так низкий, худеть тебе некуда. То, что хочется «убрать», уберут не диеты, а мышцы: они дадут упругость и форму. Твой путь — лёгкий набор с силовыми, и фигура изменится так, как не изменит ни одна сушка.`
+          : `Твой ИМТ ${qz.bmi} — масса тела недостаточная. «Жир», который тебя смущает, уйдёт не от дефицита, а от набора мышц: они подтянут форму и разгонят расход энергии. Сначала набор — потом, если захочется, короткая сушка.`;
       } else {
         title=fatName;
         text=`12 недель: умеренный дефицит без голода, силовые 3 раза в неделю, шаги. ${qz.bmi?`При твоём ИМТ ${qz.bmi} реалистичный результат за цикл — минус 6–12 кг и 5–10 см в талии.`:'Реалистичный результат за цикл — минус 6–12 кг.'}`;
@@ -805,6 +1041,95 @@
     document.getElementById('qz-bmi-out').hidden=true;
     document.getElementById('qz-h').value=''; document.getElementById('qz-w').value='';
     show('0');
+  });
+  // ===== попап подарка =====
+  // ВАЖНО: зарегистрируйся на formspree.io (бесплатно), создай форму и
+  // вставь сюда свой ID вместо YOUR_FORM_ID — лиды будут приходить на почту.
+  const FORM_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+  document.getElementById('gift-open').addEventListener('click',()=>{
+    document.getElementById('m-gift').classList.add('open');
+    document.body.style.overflow='hidden';
+  });
+  document.getElementById('gift-form').addEventListener('submit', async e=>{
+    e.preventDefault();
+    const name=document.getElementById('gf-name').value.trim(),
+          phone=document.getElementById('gf-phone').value.trim(),
+          email=document.getElementById('gf-email').value.trim(),
+          agree=document.getElementById('gf-agree').checked,
+          err=document.getElementById('gf-err');
+    if(!name || phone.replace(/\D/g,'').length<10 || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || !agree){
+      err.hidden=false; return;
+    }
+    err.hidden=true;
+    const btn=document.getElementById('gf-submit');
+    btn.disabled=true; btn.textContent='Отправляю…';
+    try{
+      await fetch(FORM_ENDPOINT,{method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify({name,phone,email,source:'guide7'})});
+    }catch(_){ /* даже при сбое отдадим гайд — лид важен, но человек важнее */ }
+    document.getElementById('gift-form-view').hidden=true;
+    document.getElementById('gift-done-view').hidden=false;
+    btn.disabled=false; btn.textContent='Получить гайд';
+  });
+  // ===== универсальное открытие модалок (Подробнее/Заказать у ведения и др.) =====
+  document.querySelectorAll('[data-modal-open]').forEach(b=>b.addEventListener('click',()=>{
+    const closeFirst=b.dataset.closeFirst;
+    if(closeFirst) document.getElementById(closeFirst).classList.remove('open');
+    document.getElementById(b.dataset.modalOpen).classList.add('open');
+    document.body.style.overflow='hidden';
+  }));
+
+  // ===== заявка на личное ведение =====
+  document.getElementById('order-form').addEventListener('submit', async e=>{
+    e.preventDefault();
+    const name=document.getElementById('of-name').value.trim(),
+          phone=document.getElementById('of-phone').value.trim(),
+          email=document.getElementById('of-email').value.trim(),
+          goal=document.getElementById('of-goal').value.trim(),
+          agree=document.getElementById('of-agree').checked,
+          err=document.getElementById('of-err');
+    if(!name || phone.replace(/\D/g,'').length<10 || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || !agree){
+      err.hidden=false; return;
+    }
+    err.hidden=true;
+    const btn=document.getElementById('of-submit');
+    btn.disabled=true; btn.textContent='Отправляю…';
+    try{
+      await fetch(FORM_ENDPOINT,{method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify({name,phone,email,goal,source:'coaching'})});
+    }catch(_){}
+    document.getElementById('order-form-view').hidden=true;
+    document.getElementById('order-done-view').hidden=false;
+    btn.disabled=false; btn.textContent='Отправить заявку';
+  });
+  // ===== попап подарка 2: жим =====
+  document.getElementById('gift2-open').addEventListener('click',()=>{
+    document.getElementById('m-gift2').classList.add('open');
+    document.body.style.overflow='hidden';
+  });
+  document.getElementById('gift2-form').addEventListener('submit', async e=>{
+    e.preventDefault();
+    const name=document.getElementById('g2-name').value.trim(),
+          phone=document.getElementById('g2-phone').value.trim(),
+          email=document.getElementById('g2-email').value.trim(),
+          agree=document.getElementById('g2-agree').checked,
+          err=document.getElementById('g2-err');
+    if(!name || phone.replace(/\D/g,'').length<10 || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || !agree){
+      err.hidden=false; return;
+    }
+    err.hidden=true;
+    const btn=document.getElementById('g2-submit');
+    btn.disabled=true; btn.textContent='Отправляю…';
+    try{
+      await fetch(FORM_ENDPOINT,{method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify({name,phone,email,source:'bench-gift'})});
+    }catch(_){}
+    document.getElementById('gift2-form-view').hidden=true;
+    document.getElementById('gift2-done-view').hidden=false;
+    btn.disabled=false; btn.textContent='Получить гайд';
   });
 </script>
 
