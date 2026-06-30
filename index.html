@@ -472,9 +472,9 @@
   .gen-text h2 em{font-style:normal;color:var(--bronze-hi)}
   .gen-text p{color:var(--fog);margin-bottom:16px}
   .gen-text p strong{color:var(--bone)}
-  .gen-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-left:2px solid var(--bronze)}
-  .gen-photos figure{position:relative;margin:0;border-bottom:none}
-  .gen-photos img{width:100%;height:100%;object-fit:cover;display:block;min-height:160px}
+  .gen-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-left:2px solid var(--bronze);align-self:stretch}
+  .gen-photos figure{position:relative;margin:0;border-bottom:none;overflow:hidden}
+  .gen-photos img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
   .gen-photos figcaption{
     position:absolute;left:0;right:0;bottom:0;padding:10px 12px;
     background:linear-gradient(to top,rgba(13,12,15,.92),transparent);
@@ -484,6 +484,7 @@
   @media(max-width:860px){
     .gen-grid{grid-template-columns:1fr}
     .gen-photos{grid-template-columns:repeat(3,1fr);border-left:none;border-top:2px solid var(--bronze)}
+    .gen-photos img{aspect-ratio:3/4;height:auto}
     .gen-text{padding:40px 28px}
   }
 
