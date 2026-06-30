@@ -268,6 +268,18 @@
   .prog h3{font-size:20px;margin-bottom:12px;min-height:54px}
   .prog .desc{font-size:14.5px;color:var(--fog);flex:1;margin-bottom:24px}
   .prog .cost{font-family:'Oswald',sans-serif;font-size:26px;font-weight:600;margin-bottom:18px}
+  .prog .cost .old{
+    font-family:'Manrope',sans-serif;font-weight:600;font-size:16px;color:var(--fog);
+    text-decoration:line-through;text-decoration-color:var(--bronze-hi);margin-right:8px;
+  }
+  .prog .cost .new{color:var(--bronze-hi)}
+  .sale-badge{
+    position:absolute;top:18px;right:18px;z-index:3;font-family:var(--mono);font-size:11px;font-weight:700;
+    background:var(--bronze);color:#fff;padding:5px 12px;border-radius:99px;letter-spacing:.03em;
+  }
+  .m-cost .old{font-family:'Manrope',sans-serif;font-weight:600;font-size:17px;color:var(--fog);
+    text-decoration:line-through;text-decoration-color:var(--bronze-hi);margin-right:8px}
+  .m-cost .new{color:var(--bronze-hi)}
   .prog .cost span{font-size:13px;color:var(--fog);font-family:'Manrope',sans-serif;font-weight:400;text-transform:none}
   .prog .btn{padding:14px 18px;font-size:13px;text-align:center}
   .prog.hot{border-color:var(--bronze);background:linear-gradient(160deg,rgba(255,90,31,.10),var(--navy) 55%)}
@@ -415,6 +427,66 @@
   footer a:hover{color:var(--bronze-hi)}
   footer .fine{font-size:12.5px;border-top:1px solid var(--navy-line);padding-top:22px}
 
+  /* ===== РЕЗУЛЬТАТЫ / ДО-ПОСЛЕ ===== */
+  .results{background:var(--night-2)}
+  .results h2{font-size:clamp(26px,3.6vw,44px);margin-bottom:14px}
+  .results .lead{color:var(--fog);max-width:660px;margin-bottom:52px}
+  .case{margin-bottom:54px}
+  .case:last-of-type{margin-bottom:0}
+  .case-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+  .case-head h3{font-size:clamp(19px,2.4vw,26px)}
+  .case-badge{
+    font-family:var(--mono);font-size:13px;letter-spacing:.04em;color:#15110C;
+    background:var(--bronze);padding:5px 14px;border-radius:99px;
+  }
+  .case-sub{color:var(--fog);font-size:15px;margin-left:auto}
+  .ba-grid{display:grid;gap:14px}
+  .ba-trio{grid-template-columns:repeat(3,1fr)}
+  .ba-duo{grid-template-columns:repeat(2,1fr);max-width:560px}
+  .ba-item{position:relative;border:1px solid var(--navy-line);border-radius:10px;overflow:hidden;background:var(--navy)}
+  .ba-item img{width:100%;display:block;aspect-ratio:3/4;object-fit:cover}
+  .ba-item .tag{
+    position:absolute;left:12px;top:12px;font-family:var(--mono);font-size:12px;font-weight:700;
+    padding:5px 12px;border-radius:4px;letter-spacing:.05em;
+  }
+  .ba-item .tag.before{background:rgba(13,12,15,.82);color:var(--bone);border:1px solid var(--navy-line)}
+  .ba-item .tag.after{background:var(--bronze);color:#15110C}
+  @media(max-width:680px){
+    .ba-trio{grid-template-columns:repeat(2,1fr)}
+    .case-sub{margin-left:0;width:100%}
+  }
+
+  /* ===== ГЕНЕТИКА ===== */
+  .genetics{background:var(--night)}
+  .genetics .box{
+    position:relative;border:2px solid var(--bronze);border-radius:14px;overflow:hidden;
+    background:
+      radial-gradient(600px 320px at 100% 0%, rgba(255,90,31,.14), transparent 60%),
+      var(--navy);
+    padding:0;
+  }
+  .gen-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:0;align-items:stretch}
+  .gen-text{padding:52px 50px}
+  .gen-text .eyebrow{margin-bottom:18px}
+  .gen-text h2{font-size:clamp(24px,3.2vw,38px);margin-bottom:22px}
+  .gen-text h2 em{font-style:normal;color:var(--bronze-hi)}
+  .gen-text p{color:var(--fog);margin-bottom:16px}
+  .gen-text p strong{color:var(--bone)}
+  .gen-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-left:2px solid var(--bronze)}
+  .gen-photos figure{position:relative;margin:0;border-bottom:none}
+  .gen-photos img{width:100%;height:100%;object-fit:cover;display:block;min-height:160px}
+  .gen-photos figcaption{
+    position:absolute;left:0;right:0;bottom:0;padding:10px 12px;
+    background:linear-gradient(to top,rgba(13,12,15,.92),transparent);
+    font-family:var(--mono);font-size:12px;color:var(--bone);
+  }
+  .gen-photos figcaption b{color:var(--bronze-hi)}
+  @media(max-width:860px){
+    .gen-grid{grid-template-columns:1fr}
+    .gen-photos{grid-template-columns:repeat(3,1fr);border-left:none;border-top:2px solid var(--bronze)}
+    .gen-text{padding:40px 28px}
+  }
+
   @media(max-width:760px){section{padding:70px 0}.quiz,.gift{padding:0 0 70px}}
   @media(prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
@@ -440,6 +512,7 @@
     <ul>
       <li><a href="#about">Обо мне</a></li>
       <li><a href="#advantages">Преимущества</a></li>
+      <li><a href="#results">Результаты</a></li>
       <li><a href="#programs">Программы</a></li>
       <li><a href="#coaching">Личное ведение</a></li>
       <li><a href="#contacts">Контакты</a></li>
@@ -459,7 +532,7 @@
         <span class="solid"><em>Ярошевич</em></span>
       </h1>
       <div class="rank reveal in d2">Мастер спорта международного класса · жим лёжа</div>
-      <p class="tagline reveal in d3">Помогаю мужчинам и женщинам <b>убрать лишний жир, набрать мышцы и стать сильнее</b> — по системе, проверенной на пути от первого жима до МСМК. Онлайн, из любого города.</p>
+      <p class="tagline reveal in d3">Помогаю мужчинам и женщинам <b>убрать лишний жир, набрать мышцы и стать сильнее</b> — по системе, где всё решает не генетика, а еда и дисциплина. Онлайн, из любого города.</p>
       <div class="hero-cta reveal in d4">
         <a class="btn" href="#programs">Выбрать программу</a>
         <a class="btn btn-ghost" href="#coaching">Личное ведение</a>
@@ -517,6 +590,65 @@
       <div class="adv-item reveal d2"><div class="n">03</div><h3>Техника под контролем</h3><p>Разбираю твои видео с тренировок и присылаю правки. Безопасная техника — это и страховка от травм, и главный резерв роста весов.</p></div>
       <div class="adv-item reveal d3"><div class="n">04</div><h3>Обратная связь без пауз</h3><p>Я на связи в мессенджере: вопросы по питанию, замена тренировки в командировке, срыв на празднике — корректирую план по ситуации, а не раз в месяц.</p></div>
       <div class="adv-item reveal d4"><div class="n">05</div><h3>Прогресс в цифрах</h3><p>Еженедельные замеры, фото и силовые показатели в единой таблице. Ты видишь динамику на графике — это дисциплинирует лучше любой мотивации.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== РЕЗУЛЬТАТЫ ===== -->
+<section class="results" id="results">
+  <div class="wrap">
+    <div class="eyebrow reveal">Результаты подопечных</div>
+    <h2 class="reveal d1">Цифры, а не обещания</h2>
+    <p class="lead reveal d2">Реальные трансформации моих клиентов на онлайн-ведении. Те же люди, тот же свет, честное «до/после».</p>
+
+    <div class="case reveal">
+      <div class="case-head">
+        <h3>Мужчина · −6 кг</h3>
+        <span class="case-badge">84 → 78 кг</span>
+        <span class="case-sub">за 2 месяца ведения · ушёл живот, появился рельеф</span>
+      </div>
+      <div class="ba-grid ba-trio">
+        <div class="ba-item"><span class="tag before">ДО · 84 кг</span><img src="ba_m_before1.jpg" alt="До, фас" loading="lazy"></div>
+        <div class="ba-item"><span class="tag before">ДО · 84 кг</span><img src="ba_m_before2.jpg" alt="До, профиль" loading="lazy"></div>
+        <div class="ba-item"><span class="tag before">ДО · 84 кг</span><img src="ba_m_before3.jpg" alt="До, спина" loading="lazy"></div>
+        <div class="ba-item"><span class="tag after">ПОСЛЕ · 78 кг</span><img src="ba_m_after1.jpg" alt="После, фас" loading="lazy"></div>
+        <div class="ba-item"><span class="tag after">ПОСЛЕ · 78 кг</span><img src="ba_m_after2.jpg" alt="После, профиль" loading="lazy"></div>
+        <div class="ba-item"><span class="tag after">ПОСЛЕ · 78 кг</span><img src="ba_m_after3.jpg" alt="После, спина" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="case reveal">
+      <div class="case-head">
+        <h3>Девушка · −13 кг</h3>
+        <span class="case-badge">73 → 60 кг</span>
+        <span class="case-sub">за 3 месяца ведения · без голодовок, с любимой едой</span>
+      </div>
+      <div class="ba-grid ba-duo">
+        <div class="ba-item"><span class="tag before">ДО · 73 кг</span><img src="ba_w_before.jpg" alt="Девушка до" loading="lazy"></div>
+        <div class="ba-item"><span class="tag after">ПОСЛЕ · 60 кг</span><img src="ba_w_after.jpg" alt="Девушка после" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ГЕНЕТИКА ===== -->
+<section class="genetics" id="genetics">
+  <div class="wrap">
+    <div class="box reveal">
+      <div class="gen-grid">
+        <div class="gen-text">
+          <div class="eyebrow">Личная история</div>
+          <h2>«У тебя просто генетика». <em>Нет.</em></h2>
+          <p>Мне это говорили чаще всего. Худой подросток <strong>50 кг</strong>, который не мог набрать ни грамма — «не дано, кость тонкая». Потом качок <strong>97 кг</strong>, который пахал в зале, но ел что попало и как попало — сила есть, формы нет.</p>
+          <p>А потом я просто <strong>настроил питание и дисциплину</strong> — и пришёл к <strong>93 кг</strong> рабочей, сухой формы и званию МСМК. Те же гены. Изменились не они — изменилась система.</p>
+          <p><strong>Генетика решает, насколько ты будешь выдающимся. Еда и дисциплина решают, будешь ли ты в форме вообще.</strong> Второе доступно каждому — и я провёл этот путь на себе, поэтому знаю каждую яму на нём.</p>
+        </div>
+        <div class="gen-photos">
+          <figure><img src="ba_gen1.jpg" alt="50 кг"><figcaption><b>50 кг</b><br>«не дано»</figcaption></figure>
+          <figure><img src="ba_gen2.jpg" alt="97 кг"><figcaption><b>97 кг</b><br>ем как попало</figcaption></figure>
+          <figure><img src="ba_gen3.jpg" alt="93 кг"><figcaption><b>93 кг</b><br>система</figcaption></figure>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -589,44 +721,44 @@
     <h2 class="reveal d1">Программы тренировок</h2>
     <p class="lead reveal d2">Для самостоятельных: подробный план тренировок и питания + видео техники всех упражнений. Файлы приходят сразу после оплаты.</p>
     <div class="prog-grid">
-      <div class="prog reveal" data-mark="−ЖИР">
+      <div class="prog reveal" data-mark="−ЖИР"><span class="sale-badge">−78%</span>
         <div class="aud">Мужчинам</div>
         <h3>Руководство по жиросжиганию для мужчин</h3>
         <p class="desc">Силовые 3 раза в неделю + питание с дефицитом без голода. Сохраняешь мышцы и силу, уходит жир. 12 недель, зал или дом.</p>
-        <div class="cost">4 990 ₽ <span>/ разово</span></div>
+        <div class="cost"><span class="old">4 990 ₽</span><span class="new">1 099 ₽</span> <span>/ разово</span></div>
         <div class="prog-actions">
           <button class="btn-more" data-modal="m-fatburn-men">Подробнее</button>
-          <a class="btn btn-ghost" href="https://web.tribute.tg/p/xKG">Купить</a>
+          <a class="btn btn-ghost" href="https://t.me/ilya_yaroshevich">Купить</a>
         </div>
       </div>
-      <div class="prog reveal d1" data-mark="ТОНУС">
+      <div class="prog reveal d1" data-mark="ТОНУС"><span class="sale-badge">−78%</span>
         <div class="aud">Девушкам</div>
         <h3>Руководство по жиросжиганию для девушек</h3>
         <p class="desc">Программа на снижение веса и упругость без «перекача»: силовые + шаги + питание с любимой едой. 12 недель.</p>
-        <div class="cost">4 990 ₽ <span>/ разово</span></div>
+        <div class="cost"><span class="old">4 990 ₽</span><span class="new">1 099 ₽</span> <span>/ разово</span></div>
         <div class="prog-actions">
           <button class="btn-more" data-modal="m-fatburn-women">Подробнее</button>
-          <a class="btn btn-ghost" href="https://web.tribute.tg/p/xKF">Купить</a>
+          <a class="btn btn-ghost" href="https://t.me/ilya_yaroshevich">Купить</a>
         </div>
       </div>
-      <div class="prog reveal d2" data-mark="+МАССА">
+      <div class="prog reveal d2" data-mark="+МАССА"><span class="sale-badge">−72%</span>
         <div class="aud">Новичкам</div>
         <h3>Набор мышечной массы</h3>
         <p class="desc">База телостроительства: 3 тренировки в неделю, прогрессия весов, питание в профицит без заплыва жиром.</p>
-        <div class="cost">3 990 ₽ <span>/ разово</span></div>
+        <div class="cost"><span class="old">3 990 ₽</span><span class="new">1 099 ₽</span> <span>/ разово</span></div>
         <div class="prog-actions">
           <button class="btn-more" data-modal="m-mass">Подробнее</button>
-          <a class="btn btn-ghost" href="https://web.tribute.tg/p/xKD">Купить</a>
+          <a class="btn btn-ghost" href="https://t.me/ilya_yaroshevich">Купить</a>
         </div>
       </div>
-      <div class="prog hot reveal d3" data-mark="100 КГ">
+      <div class="prog hot reveal d3" data-mark="100 КГ"><span class="sale-badge">−65%</span>
         <div class="aud">Фирменная · такой нет у других</div>
         <h3>Жим 100: первая сотка</h3>
         <p class="desc">Авторская программа: техника, подводки, периодизация — путь к жиму 100 кг и дальше. Для тех, кто хочет силу.</p>
-        <div class="cost">5 990 ₽ <span>/ разово</span></div>
+        <div class="cost"><span class="old">5 990 ₽</span><span class="new">2 099 ₽</span> <span>/ разово</span></div>
         <div class="prog-actions">
           <button class="btn-more" data-modal="m-bench">Подробнее</button>
-          <a class="btn" href="https://web.tribute.tg/p/xKE">Купить</a>
+          <a class="btn" href="https://t.me/ilya_yaroshevich">Купить</a>
         </div>
       </div>
     </div>
@@ -854,7 +986,7 @@
       <li>Видео-ссылки на технику всех упражнений</li>
       <li>Таблица трекинга: вес, талия, силовые — прогресс в цифрах</li>
     </ul>
-    <div class="m-cost">4 990 ₽ <span>/ разово · PDF, доступ навсегда</span></div>
+    <div class="m-cost"><span class="old">4 990 ₽</span><span class="new">1 099 ₽</span> <span>/ разово · PDF, доступ навсегда</span></div>
     <a class="btn" href="https://t.me/ilya_yaroshevich">Купить</a>
     <p class="note">Файл придёт сразу после оплаты. Вопросы по программе — пиши в Telegram.</p>
       </div>
@@ -883,7 +1015,7 @@
       <li>Видео-ссылки на технику всех упражнений</li>
       <li>Таблица трекинга замеров и фото-прогресса</li>
     </ul>
-    <div class="m-cost">4 990 ₽ <span>/ разово · PDF, доступ навсегда</span></div>
+    <div class="m-cost"><span class="old">4 990 ₽</span><span class="new">1 099 ₽</span> <span>/ разово · PDF, доступ навсегда</span></div>
     <a class="btn" href="https://t.me/ilya_yaroshevich">Купить</a>
     <p class="note">Файл придёт сразу после оплаты. Вопросы по программе — пиши в Telegram.</p>
       </div>
@@ -912,7 +1044,7 @@
       <li>Видео-ссылки на технику всех упражнений</li>
       <li>Таблица трекинга весов на штанге и замеров тела</li>
     </ul>
-    <div class="m-cost">3 990 ₽ <span>/ разово · PDF, доступ навсегда</span></div>
+    <div class="m-cost"><span class="old">3 990 ₽</span><span class="new">1 099 ₽</span> <span>/ разово · PDF, доступ навсегда</span></div>
     <a class="btn" href="https://t.me/ilya_yaroshevich">Купить</a>
     <p class="note">Файл придёт сразу после оплаты. Вопросы по программе — пиши в Telegram.</p>
       </div>
@@ -941,7 +1073,7 @@
       <li>Как правильно выходить на новый максимум и не «сгореть»</li>
       <li>Видео-ссылки на технику + таблица прогрессии весов</li>
     </ul>
-    <div class="m-cost">5 990 ₽ <span>/ разово · PDF, доступ навсегда</span></div>
+    <div class="m-cost"><span class="old">5 990 ₽</span><span class="new">2 099 ₽</span> <span>/ разово · PDF, доступ навсегда</span></div>
     <a class="btn" href="https://t.me/ilya_yaroshevich">Купить</a>
     <p class="note">Файл придёт сразу после оплаты. Вопросы по программе — пиши в Telegram.</p>
       </div>
