@@ -420,7 +420,7 @@ footer a{color:var(--muted)}
     <h2>Как записаться</h2>
     <p class="lead">Запись и оплата только в день набора: <span data-open-date></span>, с 9:00 до 23:59 по Астане.</p>
     <div class="grid-3">
-      <div class="card"><span class="num">ШАГ 1</span><h3>Оплати <span data-price></span></h3><p>Через Kaspi, если ты в Казахстане. Картой любой другой страны — через Freedom Pay.</p></div>
+      <div class="card"><span class="num">ШАГ 1</span><h3>Оплати <span data-price></span></h3><p>Через Kaspi, если ты в Казахстане. Нет Kaspi — напиши мне в Telegram, договоримся о другом способе.</p></div>
       <div class="card"><span class="num">ШАГ 2</span><h3>Отправь чек</h3><p>Скрин оплаты и свой ник в Instagram — мне в Telegram.</p></div>
       <div class="card"><span class="num">ШАГ 3</span><h3>Получи доступ</h3><p>Добавлю тебя в чат потока и подтвержу заявку в закрытый аккаунт с тренировками. В тот же день.</p></div>
     </div>
@@ -428,10 +428,9 @@ footer a{color:var(--muted)}
       <div data-show="open">
         <div class="btn-row" style="margin-top:0">
           <a class="btn" data-kaspi href="#">Оплатить через Kaspi</a>
-          <a class="btn btn-ghost" data-card href="#">Карта другой страны</a>
           <a class="btn btn-ghost" data-questions href="https://t.me/ilya_yaroshevich">Отправить чек в Telegram</a>
         </div>
-        <p class="muted" style="margin-top:14px;font-size:14px">Не проходит оплата? Напиши мне в Telegram, подберём способ.</p>
+        <p class="muted" style="margin-top:14px;font-size:14px">Нет Kaspi или ты не в Казахстане? <a href="https://t.me/ilya_yaroshevich" data-questions>Напиши мне в Telegram</a>, договоримся о другом способе оплаты.</p>
       </div>
       <div data-show="before">
         <p><b>Оплата откроется <span data-open-date></span> в 9:00.</b> В этот день кнопки оплаты появятся здесь, а ссылка на оплату — в сторис <a href="https://www.instagram.com/_levelup_gym/" target="_blank" rel="noopener">@_levelup_gym</a>. Чтобы не пропустить, подпишись на лист ожидания.</p>
@@ -477,8 +476,8 @@ footer a{color:var(--muted)}
       <details><summary>Онлайн вообще работает? Мне нужен тренер рядом.</summary><p>Тренер рядом нужен для двух вещей: поставить технику и следить за прогрессом. В Level UP ты тренируешься вместе со мной по видео, а вопросы по технике задаёшь в чате. Прогресс видно по дневнику и чек-апу раз в месяц.</p></details>
       <details><summary>Чем это лучше программы из интернета?</summary><p>Программа из интернета не знает, растёшь ты или нет. В Level UP ты отчитываешься каждую неделю, раз в месяц мы смотрим цифры, а следующий уровень строится на предыдущем.</p></details>
       <details><summary>У меня травма или ограничения по здоровью</summary><p>Напиши мне в Telegram до оплаты и опиши, что именно. Если есть риск, честно скажу, что поток не подходит. Программа не заменяет консультацию врача.</p></details>
-      <details><summary>Как оплатить и как я получу доступ?</summary><p>В день набора на этой странице появятся кнопки оплаты: Kaspi для Казахстана и Freedom Pay для карт других стран. Ссылка на оплату потока также будет в сторис <a href="https://www.instagram.com/_levelup_gym/" target="_blank" rel="noopener">@_levelup_gym</a>. После оплаты отправь мне в Telegram чек и свой ник в Instagram. Я добавлю тебя в чат потока и подтвержу заявку в закрытый аккаунт с тренировками в тот же день.</p></details>
-      <details><summary>Я не из Казахстана. Смогу оплатить?</summary><p>Да, кнопка «Карта другой страны» принимает Visa и Mastercard. Если оплата не проходит (например, с карты российского банка), напиши мне в Telegram — подберём способ.</p></details>
+      <details><summary>Как оплатить и как я получу доступ?</summary><p>В день набора на этой странице появится кнопка оплаты через Kaspi. Если Kaspi нет, напиши мне в Telegram, договоримся о другом способе. Ссылка на оплату потока также будет в сторис <a href="https://www.instagram.com/_levelup_gym/" target="_blank" rel="noopener">@_levelup_gym</a>. После оплаты отправь мне в Telegram чек и свой ник в Instagram. Я добавлю тебя в чат потока и подтвержу заявку в закрытый аккаунт с тренировками в тот же день.</p></details>
+      <details><summary>Я не из Казахстана. Смогу оплатить?</summary><p>Да. Напиши мне в Telegram, и договоримся о способе оплаты из твоей страны. Лучше написать заранее, до дня набора.</p></details>
       <details><summary>Можно оплатить сразу полгода?</summary><p>Оплата по уровням, помесячно. Участники потока продлевают следующий уровень раньше открытого набора.</p></details>
       <details><summary>Какие гарантии?</summary><p>Гарантирую план на полгода, разбор твоих цифр каждый месяц и ответы в чате. Результат зависит от выполнения: 3 тренировки в неделю, дневник и питание. Если делаешь — цифры растут.</p></details>
     </div>
@@ -533,7 +532,6 @@ const CONFIG = {
   startAt:     "2027-01-11T07:00:00+05:00",          // первая тренировка
   nextFlow:    "феврале",                            // «Следующий поток — в феврале»
   kaspiUrl:    "",                                   // ссылка Kaspi Pay (Kaspi Business → «Удалённая оплата»). Пусто → кнопка ведёт в Telegram
-  cardUrl:     "",                                   // ссылка на оплату Freedom Pay (карты других стран). Пусто → кнопка ведёт в Telegram
   waitlistUrl: "",                                   // Telegram-канал «лист ожидания»
   questionsUrl:"https://t.me/ilya_yaroshevich",
   tzLabel:     "по Астане"
@@ -550,7 +548,6 @@ const CONFIG = {
   const open = new Date(CONFIG.openAt), close = new Date(CONFIG.closeAt);
   const waitUrl = CONFIG.waitlistUrl || CONFIG.questionsUrl;
   const kaspiUrl = CONFIG.kaspiUrl || CONFIG.questionsUrl;
-  const cardUrl  = CONFIG.cardUrl  || CONFIG.questionsUrl;
 
   const forced = new URLSearchParams(location.search).get("state");
   const stateAt = now => forced || (now < open ? "before" : now <= close ? "open" : "closed");
@@ -593,7 +590,6 @@ const CONFIG = {
   const ext = (sel, url) => $$(sel).forEach(a => { a.href = url; a.target = "_blank"; a.rel = "noopener"; });
   ext("[data-questions]", CONFIG.questionsUrl);
   ext("[data-kaspi]", kaspiUrl);
-  ext("[data-card]", cardUrl);
   ext("[data-wait]", waitUrl);
 
   const pad = n => String(n).padStart(2,"0");
