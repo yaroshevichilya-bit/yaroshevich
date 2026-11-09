@@ -28,7 +28,7 @@ img{max-width:100%;display:block}
 a{color:inherit}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 20px}
 section{padding:72px 0}
-h1,h2,h3{font-family:var(--display);line-height:1.05;margin:0;letter-spacing:-.01em}
+h1,h2,h3{font-family:var(--display);line-height:1.05;margin:0;letter-spacing:-.01em;overflow-wrap:break-word}
 h2{font-size:clamp(30px,5vw,48px);font-weight:900;margin-bottom:14px}
 h3{font-size:20px;font-weight:700}
 p{margin:0}
@@ -107,6 +107,45 @@ header{position:sticky;top:0;z-index:20;background:rgba(22,23,27,.88);backdrop-f
 .quote{margin-top:32px;padding:26px;border-radius:var(--r);background:var(--plate);color:var(--plate-ink);font:500 18px/1.5 var(--body)}
 .quote b{font-family:var(--display)}
 
+/* system: before / after */
+.pillars{display:grid;gap:12px;margin-top:32px}
+.pillar{display:grid;grid-template-columns:190px 1fr 1fr;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.pillar>div{padding:22px 24px}
+.pl-name{display:flex;flex-direction:column;justify-content:center}
+.pl-name .num{margin-bottom:10px}
+.pl-name h3{font-size:22px}
+.pl-before{border-left:1px solid var(--line)}
+.pl-before p{color:var(--muted);font-size:15px}
+.pl-after{background:var(--panel-2)}
+.pl-after p{font-size:15px}
+.pillar small{display:block;font:600 12px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.pl-before small{color:var(--red)}
+.pl-after small{color:var(--plate)}
+
+/* levels: stairs */
+.stairs{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:36px}
+.stair{height:220px;display:flex;align-items:flex-end}
+.stair i{display:block;width:100%;height:calc(var(--i) * 16.66%);min-height:42px;background:var(--plate);border-radius:14px 14px 4px 4px;
+  padding:12px;font:900 14px/1 var(--display);font-style:normal;color:var(--plate-ink)}
+.step h3{font-size:18px;margin:14px 0 6px}
+.step p{color:var(--muted);font-size:14px;line-height:1.45}
+.checkup{display:grid;grid-template-columns:1.2fr 1fr;gap:20px;align-items:center;margin-top:28px;background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--plate);border-radius:var(--r);padding:24px}
+.checkup h3{margin-bottom:8px}
+.checkup p{color:var(--muted);font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.chips li{background:var(--panel-2);border-radius:999px;padding:9px 14px;font-size:15px;font-weight:500}
+
+/* week: timeline */
+.wk{margin-top:32px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:20px}
+.wk-days,.wk-row{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.wk-days span{font:700 14px/1 var(--display);color:var(--muted);text-align:center;padding-bottom:12px}
+.wk-w{background:var(--plate);color:var(--plate-ink);border-radius:12px;padding:12px 14px;min-width:0}
+.wk-w:nth-child(2){background:#c9dd2f}
+.wk-w b{display:block;font:900 15px/1.1 var(--display)}
+.wk-w span{display:block;font-size:13px;margin-top:4px}
+.wk-w .s{display:none}
+.wk-note{margin-top:14px;font-size:15px;color:var(--muted)}
+
 /* levels */
 .lvl{position:relative}
 .lvl .lvl-n{font:900 13px/1 var(--display);letter-spacing:.08em;color:var(--plate)}
@@ -173,8 +212,20 @@ footer a{color:var(--muted)}
 /* sticky mobile bar */
 .bar{display:none}
 
+header .btn{white-space:nowrap}
+@media (max-width:1000px){
+  .nav-links{gap:16px}
+  .nav-links a{font-size:14px}
+}
 @media (max-width:900px){
   .hero-grid{grid-template-columns:1fr}
+  .stairs{grid-template-columns:repeat(3,1fr);row-gap:24px}
+  .stair{height:150px}
+  .pillar{grid-template-columns:1fr}
+  .pl-name{flex-direction:row;align-items:baseline;gap:12px;padding-bottom:6px!important}
+  .pl-name .num{margin:0}
+  .pl-before{border-left:0;border-top:1px solid var(--line)}
+  .checkup{grid-template-columns:1fr}
   .hero-photo{max-width:420px;aspect-ratio:4/5}
   .stats,.grid-4,.week,.flow{grid-template-columns:1fr 1fr}
   .grid-3,.plans,.story{grid-template-columns:1fr}
@@ -184,6 +235,15 @@ footer a{color:var(--muted)}
 }
 @media (max-width:760px){
   section{padding:52px 0}
+  .stairs{grid-template-columns:1fr;row-gap:18px}
+  .stair{height:auto}
+  .stair i{height:40px;min-height:0;width:calc(30% + var(--i) * 11.66%);border-radius:4px 14px 14px 4px}
+  .step h3{margin-top:10px}
+  .wk{padding:14px 12px}
+  .wk-days,.wk-row{gap:4px}
+  .wk-w{padding:10px 8px}
+  .wk-w .l{display:none}
+  .wk-w .s{display:block}
   .nav-links,header .btn{display:none}
   .grid-2,.rules{grid-template-columns:1fr}
   .bar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:30;align-items:center;justify-content:space-between;gap:12px;
@@ -198,6 +258,10 @@ footer a{color:var(--muted)}
   .cd div{min-width:0;flex:1;padding:10px 4px}
   .cd span{font-size:22px}
   .status{padding:18px 16px}
+  .bar .bp{min-width:0}
+  .final{padding:36px 18px}
+  .final h2{font-size:28px}
+  .bar .btn{padding:12px 14px;font-size:14px;text-align:center}
 }
 </style>
 </head>
@@ -209,7 +273,8 @@ footer a{color:var(--muted)}
     <nav class="nav-links">
       <a href="#system">Система</a>
       <a href="#levels">Уровни</a>
-      <a href="#week">Как проходит</a>
+      <a href="#week">Неделя</a>
+      <a href="#story">Тренер</a>
       <a href="#price">Цена</a>
       <a href="#faq">Вопросы</a>
     </nav>
@@ -272,47 +337,33 @@ footer a{color:var(--muted)}
   </div>
 </section>
 
-<!-- STORY -->
-<section id="story" style="padding-top:0">
-  <div class="wrap">
-    <span class="eyebrow">Почему это работает</span>
-    <h2>Те же гены. Другая система.</h2>
-    <p class="lead">Мне чаще всего говорили: «у тебя просто генетика». Нет. Я прошёл путь от «не дано» до МСМК, и изменились не гены, а система.</p>
-    <div class="story">
-      <figure>
-        <img src="/ba_gen1.jpg" alt="Илья, 50 кг" loading="lazy">
-        <figcaption><b>50 кг</b><span>Худой подросток. «Не дано, кость тонкая».</span></figcaption>
-      </figure>
-      <figure>
-        <img src="/ba_gen2.jpg" alt="Илья, 97 кг" loading="lazy">
-        <figcaption><b>97 кг</b><span>Пахал в зале, ел что попало. Сила есть, формы нет.</span></figcaption>
-      </figure>
-      <figure>
-        <img src="/ba_gen3.jpg" alt="Илья, 93 кг" loading="lazy">
-        <figcaption><b>93 кг</b><span>Техника, прогрессия, питание и цифры. Сухая форма и звание МСМК.</span></figcaption>
-      </figure>
-    </div>
-    <div class="quote"><b>Level UP — это та же система, разложенная на 6 уровней.</b> Чтобы тебе не пришлось искать её 10 лет, как мне.</div>
-    <div class="stats">
-      <div class="stat"><b>МСМК</b><span>по жиму лёжа — спортивное звание, а не сертификат за выходные</span></div>
-      <div class="stat"><b>210 кг</b><span>лучший жим лёжа на официальных соревнованиях</span></div>
-      <div class="stat"><b>10+ лет</b><span>тренировок, соревнований и работы с плато</span></div>
-      <div class="stat"><b>IT</b><span>совмещаю зал с работой: прогресс в цифрах, а не по ощущениям</span></div>
-    </div>
-  </div>
-</section>
-
 <!-- SYSTEM -->
 <section id="system" style="padding-top:0">
   <div class="wrap">
     <span class="eyebrow">Система Level UP</span>
-    <h2>Четыре опоры</h2>
-    <p class="lead">Набрать массу, сбросить вес, стать сильнее — всё стоит на одном и том же. Уберёшь любую опору — прогресс встанет.</p>
-    <div class="grid-4">
-      <div class="card"><span class="num">01</span><h3>Техника</h3><p>Перед каждой тренировкой разбор: какие упражнения и зачем. Потом тренируешься вместе со мной по видео. Вопросы — в чат.</p></div>
-      <div class="card"><span class="num">02</span><h3>Прогрессия</h3><p>Каждую неделю чуть тяжелее: плюс повтор, плюс вес, плюс подход. По плану, а не по настроению.</p></div>
-      <div class="card"><span class="num">03</span><h3>Питание</h3><p>Урок на 1,5–2 часа: калории и БЖУ, чтобы набрать массу или сбросить вес, продуктовая корзина. Без запретов.</p></div>
-      <div class="card"><span class="num">04</span><h3>Цифры</h3><p>Фото «до» и «после», вес тела, замеры, рабочие веса. Раз в месяц чек-ап: видно, что работает.</p></div>
+    <h2>Четыре опоры вместо догадок</h2>
+    <p class="lead">Всё, что тормозит прогресс в зале, упирается в одну из четырёх опор. Вот как выглядит каждая без системы и в Level UP.</p>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pl-name"><span class="num">01</span><h3>Техника</h3></div>
+        <div class="pl-before"><small>Без системы</small><p>Повторяешь упражнения за соседом и не уверен, что нагрузка попадает в нужную мышцу.</p></div>
+        <div class="pl-after"><small>В Level UP</small><p>Перед каждой тренировкой разбор: какие упражнения и как их делать. Потом делаешь их вместе со мной, а видео своего подхода можешь прислать на разбор.</p></div>
+      </div>
+      <div class="pillar">
+        <div class="pl-name"><span class="num">02</span><h3>Прогрессия</h3></div>
+        <div class="pl-before"><small>Без системы</small><p>Программа меняется каждые пару недель, а рабочие веса стоят месяцами.</p></div>
+        <div class="pl-after"><small>В Level UP</small><p>Прогрессия на каждой тренировке: стало легко — добавляешь повтор или вес. А с каждым месяцем растёт объём работы.</p></div>
+      </div>
+      <div class="pillar">
+        <div class="pl-name"><span class="num">03</span><h3>Питание</h3></div>
+        <div class="pl-before"><small>Без системы</small><p>Пашешь в зале, а в зеркале без изменений, потому что еда работает против цели.</p></div>
+        <div class="pl-after"><small>В Level UP</small><p>Урок о питании под твою цель: набрать массу или сбросить вес. Считаешь КБЖУ и собираешь рацион из продуктов, которые любишь.</p></div>
+      </div>
+      <div class="pillar">
+        <div class="pl-name"><span class="num">04</span><h3>Цифры</h3></div>
+        <div class="pl-before"><small>Без системы</small><p>Прогресс по ощущениям. Непонятно, работает программа или пора всё менять.</p></div>
+        <div class="pl-after"><small>В Level UP</small><p>На старте и в конце каждого уровня: фото, вес тела, замеры и рабочие веса. Сравниваем и видим, что работает.</p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -321,15 +372,19 @@ footer a{color:var(--muted)}
 <section id="levels" style="padding-top:0">
   <div class="wrap">
     <span class="eyebrow">Путь на полгода</span>
-    <h2>6 уровней</h2>
-    <p class="lead">Каждый уровень — 1 месяц и 12 тренировок. На следующий переходишь после чек-апа, когда выросли цифры.</p>
-    <div class="grid-3">
-      <div class="card lvl"><span class="lvl-n">LVL 1</span><h3>Фундамент</h3><p>Техника базовых движений, подбор рабочих весов, привычка 3 тренировки в неделю. Точка отсчёта для всех цифр.</p><div class="xp"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div></div>
-      <div class="card lvl"><span class="lvl-n">LVL 2</span><h3>Объём</h3><p>Больше работы на каждую мышцу. Первый заметный рост в зеркале.</p><div class="xp"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i></div></div>
-      <div class="card lvl"><span class="lvl-n">LVL 3</span><h3>Сила</h3><p>Меньше повторов, больше вес. Растут рабочие веса в базовых упражнениях.</p><div class="xp"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div></div>
-      <div class="card lvl"><span class="lvl-n">LVL 4</span><h3>Плотность</h3><p>Суперсеты, короче отдых, больше работы за то же время.</p><div class="xp"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
-      <div class="card lvl"><span class="lvl-n">LVL 5</span><h3>Пик</h3><p>Самый тяжёлый месяц: техники интенсивности и максимум нагрузки.</p><div class="xp"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
-      <div class="card lvl"><span class="lvl-n">LVL 6</span><h3>Форма</h3><p>Закрепляем результат. Финальный чек-ап: итог полугода в цифрах и фото.</p><div class="xp"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
+    <h2>Каждый месяц — новый уровень</h2>
+    <p class="lead">Уровень — это месяц и 12 тренировок. От уровня к уровню меняется задача и растёт нагрузка.</p>
+    <div class="stairs">
+      <div class="step"><div class="stair"><i style="--i:1">LvL1</i></div><h3>Фундамент</h3><p>Ставим технику базовых движений и находим твои рабочие веса.</p></div>
+      <div class="step"><div class="stair"><i style="--i:2">LvL2</i></div><h3>Объём</h3><p>Больше работы на каждую мышцу. Первый заметный рост в зеркале.</p></div>
+      <div class="step"><div class="stair"><i style="--i:3">LvL3</i></div><h3>Сила</h3><p>Меньше повторов, больше вес. Растут рабочие веса в базе.</p></div>
+      <div class="step"><div class="stair"><i style="--i:4">LvL4</i></div><h3>Плотность</h3><p>Суперсеты и короткий отдых: больше работы за то же время.</p></div>
+      <div class="step"><div class="stair"><i style="--i:5">LvL5</i></div><h3>Пик</h3><p>Самый тяжёлый месяц. Максимум нагрузки за полгода.</p></div>
+      <div class="step"><div class="stair"><i style="--i:6">LvL6</i></div><h3>Форма</h3><p>Закрепляем результат и подводим итог полугода.</p></div>
+    </div>
+    <div class="checkup">
+      <div><span class="num">В КОНЦЕ КАЖДОГО УРОВНЯ</span><h3>Чек-ап</h3><p>Сравниваем с точкой старта, разбираем цифры и переходишь на следующий уровень. Участники потока продлевают раньше открытого набора.</p></div>
+      <ul class="chips"><li>Вес тела</li><li>Фото</li><li>Замеры</li><li>Рабочие веса</li></ul>
     </div>
     <p class="muted" style="margin-top:18px;font-size:15px">Новичок и опытный идут по одной программе, а рабочий вес у каждого свой. Для опытных LvL1 — это калибровка: чистим технику и фиксируем точку отсчёта.</p>
   </div>
@@ -339,23 +394,52 @@ footer a{color:var(--muted)}
 <section id="week" style="padding-top:0">
   <div class="wrap">
     <span class="eyebrow">Как проходит неделя</span>
-    <h2>3 тренировки. 48 часов на каждую.</h2>
-    <p class="lead">Тренировки выходят рилсами на закрытой странице в Instagram. Делаешь в любое удобное время, пока не вышла следующая. Около часа на тренировку.</p>
-    <div class="week">
-      <div class="day"><div class="d">Пн</div><span class="t" data-tz-time>7:00</span><p>Выходят 2 видео тренировки. Доступны до среды.</p></div>
-      <div class="day"><div class="d">Ср</div><span class="t" data-tz-time>7:00</span><p>Выходит новая тренировка. Доступна до пятницы.</p></div>
-      <div class="day"><div class="d">Пт</div><span class="t" data-tz-time>7:00</span><p>Третья тренировка недели. Доступна до понедельника.</p></div>
-      <div class="day"><div class="d">Пропуск</div><span class="t">не сохраняется</span><p>Тренировка удаляется, когда выходит следующая. В личку не отправляется.</p></div>
+    <h2>Тренировка — когда тебе удобно</h2>
+    <p class="lead">Пн, ср и пт в <span data-tz-time>7:00</span> в закрытом Telegram-канале выходит тренировка. Делаешь её, когда удобно: утром до работы, в обед или вечером. Около часа в зале.</p>
+    <div class="wk">
+      <div class="wk-days"><span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span></div>
+      <div class="wk-row">
+        <div class="wk-w" style="grid-column:1/3"><b class="l">Тренировка 1</b><b class="s">№1</b><span class="l">пн 7:00 → ср 7:00</span><span class="s">48 ч</span></div>
+        <div class="wk-w" style="grid-column:3/5"><b class="l">Тренировка 2</b><b class="s">№2</b><span class="l">ср 7:00 → пт 7:00</span><span class="s">48 ч</span></div>
+        <div class="wk-w" style="grid-column:5/8"><b class="l">Тренировка 3</b><b class="s">№3</b><span class="l">пт 7:00 → пн 7:00</span><span class="s">до пн</span></div>
+      </div>
+      <p class="wk-note">В любой день недели у тебя открыта одна тренировка. Не успел до выхода следующей — она удаляется и в личку не отправляется.</p>
     </div>
     <div class="flow">
-      <div class="card"><span class="num">ВИДЕО 1</span><h3>Разбор тренировки</h3><p>Что будет на тренировке, какие упражнения и для чего каждое. Смотришь дома или по дороге в зал.</p></div>
-      <div class="card"><span class="num">ВИДЕО 2</span><h3>Тренируемся вместе</h3><p>Сама тренировка. Включаешь в зале и делаешь вместе со мной, как будто я рядом.</p></div>
-      <div class="card"><span class="num">ТВОЙ ВЕС</span><h3>Работаешь своим весом</h3><p>Упражнения и повторы за мной, а рабочий вес подбираешь под себя.</p></div>
-      <div class="card"><span class="num">ПРОГРЕССИЯ</span><h3>Каждую неделю чуть тяжелее</h3><p>Стало легко — добавляешь повтор или вес. Так растут мышцы.</p></div>
+      <div class="card"><span class="num">7:00</span><h3>Выходит тренировка</h3><p>Два видео в закрытом Telegram-канале с удобной навигацией.</p></div>
+      <div class="card"><span class="num">ДОМА</span><h3>Смотришь разбор</h3><p>Видео 1: какие упражнения и зачем. Заранее, дома или по дороге в зал.</p></div>
+      <div class="card"><span class="num">В ЗАЛЕ</span><h3>Тренируемся вместе</h3><p>Видео 2: телефон рядом, делаешь подход вместе со мной. Повторы и отдых на экране, вес свой.</p></div>
+      <div class="card"><span class="num">В ЧАТЕ</span><h3>Разбор техники</h3><p>Вопросы по технике и питанию — в чат потока. Пришлёшь видео подхода — разберу. Отвечаю сам в течение 24 часов.</p></div>
     </div>
-    <div class="grid-2">
-      <div class="card"><span class="num">КОНЕЦ МЕСЯЦА</span><h3>Чек-ап и LvL UP</h3><p>Фото «после», вес тела, замеры и рабочие веса. Разбираем цифры и переходишь на следующий уровень. Участники потока продлевают раньше открытого набора.</p></div>
-      <div class="card"><span class="num">ВСЕГДА НА СВЯЗИ</span><h3>Закрытый чат потока</h3><p>Вопросы по технике, питанию и самочувствию. Отвечаю сам, без ассистентов.</p></div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="story" style="padding-top:0">
+  <div class="wrap">
+    <span class="eyebrow">Тренер</span>
+    <h2>Те же гены. Другая система.</h2>
+    <p class="lead">Мне чаще всего говорили: «у тебя просто генетика». Посмотри, с чего я начинал и что на самом деле изменилось.</p>
+    <div class="story">
+      <figure>
+        <img src="/ba_gen1.jpg" alt="Илья, 50 кг" loading="lazy">
+        <figcaption><b>50 кг</b><span>Худой подросток. Слышал: «не дано, кость тонкая».</span></figcaption>
+      </figure>
+      <figure>
+        <img src="/ba_gen2.jpg" alt="Илья, 97 кг" loading="lazy">
+        <figcaption><b>97 кг</b><span>Тренировался много, а ел что попало. Сила есть, формы нет.</span></figcaption>
+      </figure>
+      <figure>
+        <img src="/ba_gen3.jpg" alt="Илья, 93 кг" loading="lazy">
+        <figcaption><b>93 кг</b><span>Все четыре опоры на месте. Вес меньше, формы больше, звание МСМК.</span></figcaption>
+      </figure>
+    </div>
+    <div class="quote"><b>Я шёл к этой системе 10 лет.</b> В Level UP она уже разложена на 6 уровней, и тебе не придётся собирать её самому.</div>
+    <div class="stats">
+      <div class="stat"><b>МСМК</b><span>по жиму лёжа — спортивное звание, а не сертификат за выходные</span></div>
+      <div class="stat"><b>210 кг</b><span>лучший жим лёжа на официальных соревнованиях</span></div>
+      <div class="stat"><b>10+ лет</b><span>тренировок, соревнований и работы с плато</span></div>
+      <div class="stat"><b>IT</b><span>совмещаю зал с работой, поэтому Level UP — под обычный рабочий график</span></div>
     </div>
   </div>
 </section>
@@ -364,7 +448,7 @@ footer a{color:var(--muted)}
 <section id="price" style="padding-top:0">
   <div class="wrap">
     <span class="eyebrow">Цена</span>
-    <h2>Система и контроль тренера в 5 раз дешевле</h2>
+    <h2>Система и контроль тренера без цены личного ведения</h2>
     <p class="lead">Та же система, что и в личном ведении, только в потоке, а не один на один.</p>
     <div class="plans">
       <div class="plan hl">
@@ -374,41 +458,33 @@ footer a{color:var(--muted)}
         <p class="muted" style="font-size:14px" data-price-alt></p>
         <dl>
           <dt>План</dt><dd>6 уровней на полгода, 12 тренировок в месяц</dd>
-          <dt>Тренировки</dt><dd>2 видео на каждую: разбор и тренировка вместе со мной</dd>
-          <dt>Техника</dt><dd>Вопросы и видео своих подходов в чат</dd>
+          <dt>Тренировки</dt><dd>2 видео на каждую в закрытом Telegram-канале: разбор и тренировка вместе со мной</dd>
+          <dt>Техника</dt><dd>Разбор видео твоих подходов в чате</dd>
           <dt>Контроль</dt><dd>Чек-ап каждый месяц: фото и цифры</dd>
-          <dt>Связь</dt><dd>Закрытый чат потока, отвечаю сам</dd>
+          <dt>Связь</dt><dd>Чат потока в Telegram, отвечаю сам в течение 24 часов</dd>
           <dt>Питание</dt><dd>Урок на 1,5–2 часа + продуктовая корзина</dd>
+          <dt>Продление</dt><dd>Следующий уровень раньше открытого набора</dd>
         </dl>
         <div class="btn-row" style="margin-top:22px"><a class="btn" data-cta href="#price" style="width:100%">Записаться</a></div>
       </div>
       <div class="plan">
         <h3>Личное ведение</h3>
-        <div class="p">150 000 ₸ <small>/ месяц</small></div>
+        <div class="p">от 80 000 ₸ <small>/ месяц</small></div>
+        <p class="muted" style="font-size:14px">Цена зависит от твоих целей и формата работы.</p>
         <dl>
-          <dt>План</dt><dd>Индивидуальный под график и здоровье</dd>
+          <dt>План</dt><dd>Индивидуальный под цели, график и здоровье</dd>
           <dt>Техника</dt><dd>Разбор твоих видео подходов</dd>
           <dt>Контроль</dt><dd>Корректировка каждую неделю</dd>
           <dt>Связь</dt><dd>Лично, каждый день</dd>
         </dl>
       </div>
     </div>
-    <div class="grid-2">
-      <div class="card"><h3>Что ты получаешь</h3><ul>
-        <li>12 тренировок в месяц: разбор + тренировка вместе со мной</li>
-        <li>Урок о питании и продуктовая корзина</li>
-        <li>Закрытая страница в Instagram и чат потока в Telegram</li>
-        <li>Чек-ап в конце месяца и разбор цифр</li>
-        <li>Продление следующего уровня раньше всех</li>
-      </ul></div>
-      <div class="card"><h3>Что нужно тебе</h3><ul>
-        <li>Абонемент в тренажёрный зал</li>
-        <li>Телефон, чтобы смотреть тренировки</li>
-        <li>Кухонные весы, чтобы считать КБЖУ</li>
-        <li>3 часа в неделю</li>
-        <li>Отсутствие противопоказаний к силовым нагрузкам</li>
-      </ul></div>
-    </div>
+    <div class="card" style="margin-top:16px;max-width:880px"><h3>Что нужно тебе</h3><ul>
+      <li>Абонемент в тренажёрный зал и телефон, чтобы смотреть тренировки</li>
+      <li>Кухонные весы, чтобы считать КБЖУ</li>
+      <li>3 часа в неделю</li>
+      <li>Отсутствие противопоказаний к силовым нагрузкам</li>
+    </ul></div>
   </div>
 </section>
 
@@ -420,8 +496,8 @@ footer a{color:var(--muted)}
     <p class="lead">Запись и оплата только в день набора: <span data-open-date></span>, с 9:00 до 23:59 по Астане.</p>
     <div class="grid-3">
       <div class="card"><span class="num">ШАГ 1</span><h3>Оплати <span data-price></span></h3><p>Через Kaspi, если ты в Казахстане. Нет Kaspi — напиши мне в Telegram, договоримся о другом способе.</p></div>
-      <div class="card"><span class="num">ШАГ 2</span><h3>Отправь чек</h3><p>Скрин оплаты и свой ник в Instagram — мне в Telegram.</p></div>
-      <div class="card"><span class="num">ШАГ 3</span><h3>Получи доступ</h3><p>В течение 24 часов добавлю тебя в чат потока и пришлю ссылку на закрытый аккаунт с тренировками.</p></div>
+      <div class="card"><span class="num">ШАГ 2</span><h3>Отправь чек</h3><p>Скрин оплаты — мне в Telegram.</p></div>
+      <div class="card"><span class="num">ШАГ 3</span><h3>Получи доступ</h3><p>В течение 24 часов добавлю тебя в чат потока и пришлю ссылку на закрытый Telegram-канал с тренировками.</p></div>
     </div>
     <div class="paybox">
       <div data-show="open">
@@ -465,20 +541,22 @@ footer a{color:var(--muted)}
     <span class="eyebrow">Вопросы</span>
     <h2>Частые вопросы</h2>
     <div class="faq">
-      <details><summary>Я новичок. Справлюсь?</summary><p>Да, LvL1 как раз для этого. Перед тренировкой я разбираю, какие упражнения и зачем, а саму тренировку ты делаешь вместе со мной по видео. Рабочий вес подбираешь под себя. Любой вопрос по технике задаёшь в чате.</p></details>
+      <details><summary>Я новичок. Справлюсь?</summary><p>Да, LvL1 как раз для этого. Перед тренировкой я разбираю, какие упражнения и зачем, а саму тренировку ты делаешь вместе со мной по видео. Рабочий вес подбираешь под себя. Сомневаешься в технике — сними подход на видео и пришли в чат, я разберу. Отвечаю в течение 24 часов.</p></details>
       <details><summary>Я тренируюсь давно. Зачем мне LvL1?</summary><p>Программа общая, а вес у тебя свой, поэтому легко не будет. LvL1 для опытных — это калибровка: чистим технику, фиксируем рабочие веса и получаем точку отсчёта. Без неё на LvL3–5 не понять, растёшь ты или нет.</p></details>
-      <details><summary>Сколько времени это занимает?</summary><p>3 тренировки в неделю, около часа каждая. На каждую тренировку есть 48 часов, так что подстроишь под работу и семью.</p></details>
+      <details><summary>Сколько времени это занимает?</summary><p>3 тренировки в неделю, около часа каждая. Тренировка выходит в 7:00 и доступна 48 часов: делаешь, когда удобно — утром до работы, в обед или поздно вечером. Плавающий график тоже подойдёт.</p></details>
       <details><summary>Можно тренироваться дома?</summary><p>Нет. Level UP построен под тренажёрный зал: штанга, гантели, тренажёры.</p></details>
       <details><summary>Что если я пропущу тренировку?</summary><p>Пропущенная по личным причинам тренировка не сохраняется и в личку не отправляется. Поэтому 3 тренировки в неделю — обязательное правило.</p></details>
       <details><summary>Будет готовое меню?</summary><p>Нет. Будет урок о питании на 1,5–2 часа: как посчитать калории, белки, жиры и углеводы, чтобы набрать массу или сбросить вес, и продуктовая корзина. Рацион собираешь из еды, которую любишь.</p></details>
       <details><summary>Набрать массу или сбросить вес: как понять, что мне?</summary><p>Разбираем в уроке о питании, а если сомневаешься — спроси меня в чате. Тренировки общие, цель меняет только питание.</p></details>
-      <details><summary>Онлайн вообще работает? Мне нужен тренер рядом.</summary><p>Тренер рядом нужен для двух вещей: поставить технику и следить за прогрессом. В Level UP ты тренируешься вместе со мной по видео, а вопросы по технике задаёшь в чате. Прогресс видно по фото и цифрам на чек-апе раз в месяц.</p></details>
-      <details><summary>Чем это лучше программы из интернета?</summary><p>Программа из интернета не знает, растёшь ты или нет. В Level UP я на связи в чате, раз в месяц мы смотрим фото и цифры, а следующий уровень строится на предыдущем.</p></details>
+      <details><summary>Онлайн вообще работает? Мне нужен тренер рядом.</summary><p>Тренер рядом нужен для двух вещей: поставить технику и следить за прогрессом. В Level UP ты тренируешься вместе со мной по видео, а технику я проверяю по твоим видео: снимаешь подход, присылаешь в чат, я разбираю. Отвечаю в течение 24 часов. Прогресс видно по фото и цифрам на чек-апе раз в месяц.</p></details>
+      <details><summary>Чем это лучше программы из интернета?</summary><p>Программа из интернета не знает, растёшь ты или нет, и не посмотрит на твою технику. В Level UP я разбираю твои подходы по видео, раз в месяц мы смотрим фото и цифры, а следующий уровень строится на предыдущем.</p></details>
+      <details><summary>Как тренироваться с телефоном в зале?</summary><p>Разбор (видео 1) смотришь заранее: дома или по дороге в зал. В зале остаётся только видео 2: ставишь телефон на скамью или подоконник рядом и делаешь подход вместе со мной. Сколько подходов, повторов и отдыха — видно на экране, ничего не нужно запоминать.</p></details>
+      <details><summary>Как понять до оплаты, что мне подойдёт?</summary><p>Задай любой вопрос мне в Telegram до дня набора — отвечу лично.</p></details>
       <details><summary>У меня травма или ограничения по здоровью</summary><p>Напиши мне в Telegram до оплаты и опиши, что именно. Если есть риск, честно скажу, что поток не подходит. Программа не заменяет консультацию врача.</p></details>
-      <details><summary>Как оплатить и как я получу доступ?</summary><p>В день набора на этой странице появится кнопка оплаты через Kaspi. Если Kaspi нет, напиши мне в Telegram, подберём другой способ оплаты. Ссылка на оплату потока также будет в сторис <a href="https://www.instagram.com/_levelup_gym/" target="_blank" rel="noopener">@_levelup_gym</a>. После оплаты обязательно отправь мне в Telegram чек и свой ник в Instagram. В течение 24 часов я добавлю тебя в чат потока и пришлю ссылку на закрытый аккаунт с тренировками.</p></details>
-      <details><summary>Я не из Казахстана. Смогу оплатить?</summary><p>Да. Напиши мне в Telegram, и договоримся о способе оплаты из твоей страны. Лучше написать заранее, до дня набора.</p></details>
+      <details><summary>Как оплатить и как я получу доступ?</summary><p>В день набора на этой странице появится кнопка оплаты через Kaspi. Если Kaspi нет, напиши мне в Telegram, подберём другой способ оплаты. Ссылка на оплату потока также будет в сторис <a href="https://www.instagram.com/_levelup_gym/" target="_blank" rel="noopener">@_levelup_gym</a>. После оплаты обязательно отправь мне в Telegram чек. В течение 24 часов я добавлю тебя в чат потока и пришлю ссылку на закрытый Telegram-канал с тренировками.</p></details>
+      <details><summary>Я не из Казахстана. Смогу оплатить?</summary><p>Да. Напиши мне в Telegram, и договоримся о способе оплаты из твоей страны. Лучше написать заранее, до дня набора. После оплаты всё так же: в течение 24 часов добавлю в чат и пришлю ссылку на тренировки. Тренировки выходят в 7:00 по Астане, но на каждую есть 48 часов, так что часовой пояс не мешает.</p></details>
       <details><summary>Можно оплатить сразу полгода?</summary><p>Оплата по уровням, помесячно. Участники потока продлевают следующий уровень раньше открытого набора.</p></details>
-      <details><summary>Какие гарантии?</summary><p>Гарантирую план на полгода, разбор твоих цифр каждый месяц и ответы в чате. Результат зависит от выполнения: 3 тренировки в неделю и питание. Если делаешь — цифры растут.</p></details>
+      <details><summary>Какие гарантии?</summary><p>Гарантирую план на полгода, разбор твоих цифр каждый месяц, разбор техники по видео и ответы в чате в течение 24 часов. Результат зависит от выполнения: 3 тренировки в неделю и питание. Если делаешь — цифры растут.</p></details>
     </div>
     <p class="muted" style="margin-top:22px">Не нашёл ответ? <a href="https://t.me/ilya_yaroshevich" data-questions>Напиши мне в Telegram</a>, отвечаю лично.</p>
   </div>
@@ -565,7 +643,7 @@ const CONFIG = {
       target: close,
       cta: "Записаться · " + CONFIG.price,
       href: "#pay",
-      note: "После оплаты отправь чек и ник в Instagram мне в Telegram — добавлю в чат потока и к тренировкам.",
+      note: "После оплаты отправь чек мне в Telegram — добавлю в чат потока и в канал с тренировками.",
       bar: "Запись открыта"
     },
     closed: {
